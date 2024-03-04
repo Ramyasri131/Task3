@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role details</title>
+    <link rel="stylesheet" href="styles/common/default.css" />
+    <link rel="stylesheet" href="styles/roledetails.css" />
+
+</head>
+
+<body>
+
+    <!--side bar starts-->
+    <aside class="minimized-side-nav">
+        <div class="minimized-icons">
+            <div class="minimized-logo">
+                <img src="assets/images/TezoLogo-minimized.png" alt="tezo-logo" />
+
+            </div>
+            <div class="vertical-icons">
+                <p class="all" id="defintion">ALL</p>
+                <div class="minimized-roles">
+                    <img src="assets/icons/Dashboard.svg" alt="dashboard" />
+                </div>
+                <div class="minimized-roles">
+                    <div class="employee-tag-left">
+                        <!-- <img src="assets/Horizontal nav/Employees.svg" alt="employees-logo" /> -->
+                        <img src="assets/icons/team.svg" alt="employees-logo" />
+                    </div>
+
+                </div>
+
+                <div class="roles-user">
+                    <p id="role-heading">ROLE </p>
+                    <div class="minimized-roles">
+
+                        <!-- <img src="assets/Horizontal nav/Roles.svg" alt="roles-icon" class="role-icon" /> -->
+                        <img src="assets/images/roles-icon.png" alt="roles-icon" class="role-icon" />
+
+                    </div>
+                    <div class="access-rights">
+                        <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </aside>
+    <aside id="side-nav">
+        <div class="side-bar">
+            <div class="logo">
+                <img src="assets/images/TezoLogo.png" id="tezoLogo" alt="tezo-logo" />
+            </div>
+            <p class="all" id="defintion">ALL</p>
+            <div class="dashboard">
+                <img src="assets/icons/Dashboard.svg" alt="dashboard" />
+                <span><a href="role.html" title="Dashboard" class="links">Dashboard</a></span>
+            </div>
+            <div class="dashboard" id="employee-tag">
+                <img src="assets/icons/team.svg" alt="employees-logo" />
+                <span><a href="index.html" title="Employess" class="links">Employees</a></span>
+            </div>
+            <div class="roles-user">
+                <p id="role-heading">ROLE / USER MANAGEMENT</p>
+                <div class="roles">
+
+                    <img src="assets/images/roles-icon.png" alt="roles-icon" class="role-icon" />
+                    <span><a href="role.html" title="Roles" class="links">Roles</a></span>
+                    <img src="assets/images/red-arrow.png" id="right-arrow" alt="right-arrow" />
+                    <div class="color">
+                        <span>k</span>
+                    </div>
+                </div>
+                <div class="access-rights">
+                    <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
+
+                    <span><a href="#" title="Access rights" class="links">Access right</a></span>
+                    <img src="assets/icons/rightarrow.png" id="right-arrow2" alt="right-arrow" />
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="pop-up-box">
+            <div class="pop-up">
+                <p>Install new update 2.3.1A</p>
+                <span>Allow to launch the new update for the AD application</span>
+                <div class="btn-container">
+                    <button id="dismiss" onclick="closeNotification()">Dismiss</button>
+                    <button id="accept" onclick="closeNotification()">Accept</button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!--Right side content-->
+    <div class="main-section">
+
+        <!--header starts here-->
+        <header class="header">
+            <div> <button type="submit" id="handle-logo" onclick="toggleSideBar()"> <img src="assets/images/handle.png"
+                        alt="handle" /></button> </div>
+
+            <div class="search-bar">
+                <!-- <button type="submit" id="hamburger-menu" onclick="toggleSideBar()"><img src="assets/menu.png" alt="hamburger-menu" /></button> -->
+                <img src="assets/images/bx-search.png" alt="search-icon" id="search" />
+                <input type="text" name="searchbar" placeholder="Search" size="70">
+                <div class="header-icon">
+                    <img src="assets/icons/Language.svg" alt="lang-logo" />
+                    <img src="assets/icons/Categories.svg" alt="category" />
+                    <img src="assets/icons/Mode.svg" alt="mode" />
+                    <img src="assets/icons/Notifications.svg" alt="notifications" />
+                </div>
+                <div class="profile">
+
+                    <img src="assets/images/profie-icon.png" alt="profile-icon" />
+                    <div class="status">
+
+                    </div>
+
+                    <div class="profile-name">
+                        <div>
+                            <span>John Abraham</span>
+                            <span id="admin">Admin</span>
+                        </div>
+                        <img src="assets/images/down-arrow.png" alt="down-arrow" id="down-arrow" />
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!--main page-->
+        <main class="view-employees">
+            <!--add employee-->
+            <div class="add-employee">
+                <div class="add-employee-desc">
+                    <div class="roles-employees">
+                        <span id="role"><a href="role.html" title="role.html">Roles</a>
+                            <img src="assets/images/chevron.png" alt="right-arrow" id="role-right" />
+                            <span id="role">Employees</span>
+                    </div>
+                    <div class="all-roles">All the roles are configured here</div>
+
+                </div>
+                <button class="add-employee-box">
+                    <img src="assets/icons/Add.svg" alt="export-icon" id="export-icon" />
+                    <span>ADD EMPLOYEE</span>
+                </button>
+            </div>
+
+            <!--Role description-->
+            <div class="role-desc">
+                <p id="role-data">Role Description</p>
+                <span>Configure the providers that are available to users when they sign in. Configure the providers
+                    that are available to users when they sign in. Configure the providers that are available to users
+                    when they sign in. Configure the providers that are available to users when they sign in.</span>
+            </div>
+
+            <!-- content of page -->
+            <div class="details-section">
+                <div class="details-card">
+                    <div class="card-content">
+                        <div class="employee-details">
+                            <img src="assets/images/profie-icon.png" alt="profile icon" />
+                            <div class="employee-name">
+                                <span id="emp-name">Robert Fox</span>
+                                <span>Head of Product design</span>
+                            </div>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/emp-id.svg" alt="emp_id" />
+                            <span>INF122</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/email-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>adamk@yahoo.com</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/team.svg" alt="emp_id" />
+                            <span>Technology</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/location-pin-alt-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>Stockton, New Hampshire</span>
+                        </div>
+                    </div>
+                    <div class="view">
+                        <span>View</span>
+                        <img src="assets/images/view.png" alt="view-logo" />
+
+                    </div>
+                </div>
+                <div class="details-card">
+                    <div class="card-content">
+                        <div class="employee-details">
+                            <img src="assets/images/profie-icon.png" alt="profile icon" />
+                            <div class="employee-name">
+                                <span id="emp-name">Marvin McKinney</span>
+                                <span>Head of Engineering</span>
+                            </div>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/emp-id.svg" alt="emp_id" />
+                            <span>INF150</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/email-1_svgrepo.com.svg" alt="emp_id" />
+
+                            <span>sravani@yahoo.com</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/team.svg" alt="emp_id" />
+                            <span>Admin</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/location-pin-alt-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>Syracuse, Connecticut</span>
+                        </div>
+                    </div>
+                    <div class="view">
+                        <span>View</span>
+                        <img src="assets/images/view.png" alt="view-logo" />
+
+                    </div>
+                </div>
+                <div class="details-card">
+                    <div class="card-content">
+                        <div class="employee-details">
+                            <img src="assets/images/profie-icon.png" alt="profile icon" />
+                            <div class="employee-name">
+                                <span id="emp-name">Elenor Pena</span>
+                                <span>Senior Interaction designer</span>
+                            </div>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/emp-id.svg" alt="emp_id" />
+                            <span>INF240</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/email-1_svgrepo.com.svg" alt="emp_id" />
+
+                            <span>grolschie@mac.com</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/team.svg" alt="emp_id" />
+                            <span>Customer Executive</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/location-pin-alt-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>Portland, Illinois</span>
+                        </div>
+                    </div>
+                    <div class="view">
+                        <span>View</span>
+                        <img src="assets/images/view.png" alt="view-logo" />
+
+                    </div>
+                </div>
+                <div class="details-card">
+                    <div class="card-content">
+                        <div class="employee-details">
+                            <img src="assets/images/profie-icon.png" alt="profile icon" />
+                            <div class="employee-name">
+                                <span id="emp-name">Jane cooper</span>
+                                <span>Product Analyst</span>
+                            </div>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/emp-id.svg" alt="emp_id" />
+                            <span>INF389</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/email-1_svgrepo.com.svg" alt="emp_id" />
+
+                            <span>chronos@aol.com</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/team.svg" alt="emp_id" />
+                            <span>Product</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/location-pin-alt-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>coppell, Virginia</span>
+                        </div>
+                    </div>
+                    <div class="view">
+                        <span>View</span>
+                        <img src="assets/images/view.png" alt="view-logo" />
+
+                    </div>
+                </div>
+                <div class="details-card">
+                    <div class="card-content">
+                        <div class="employee-details">
+                            <img src="assets/images/profie-icon.png" alt="profile icon" />
+                            <div class="employee-name">
+                                <span id="emp-name">Floyd Miles</span>
+                                <span>Visual Designer</span>
+                            </div>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/emp-id.svg" alt="emp_id" />
+                            <span>INF209</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/email-1_svgrepo.com.svg" alt="emp_id" />
+
+                            <span>dgatwood@msn.com</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/team.svg" alt="emp_id" />
+                            <span>Customers Executive</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/location-pin-alt-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>Lansing, Illinois</span>
+                        </div>
+                    </div>
+                    <div class="view">
+                        <span>View</span>
+                        <img src="assets/images/view.png" alt="view-logo" />
+
+                    </div>
+                </div>
+                <div class="details-card">
+                    <div class="card-content">
+                        <div class="employee-details">
+                            <img src="assets/images/profie-icon.png" alt="profile icon" />
+                            <div class="employee-name">
+                                <span id="emp-name">Dianee Russell</span>
+                                <span>Full stack software Engineer</span>
+                            </div>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/emp-id.svg" alt="emp_id" />
+                            <span>INF922</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/email-1_svgrepo.com.svg" alt="emp_id" />
+
+                            <span>kspiteri@live.com</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/team.svg" alt="emp_id" />
+                            <span>Human Research</span>
+                        </div>
+                        <div class="employee-info">
+                            <img src="assets/icons/location-pin-alt-1_svgrepo.com.svg" alt="emp_id" />
+                            <span>Corona, Michigan</span>
+                        </div>
+                    </div>
+                    <div class="view">
+                        <span>View</span>
+                        <img src="assets/images/view.png" alt="view-logo" />
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </main>
+    </div>
+    <!-- <script type="text/javascript" src="javascript/common/common.js"></script> -->
+    <script type="text/javascript" src="javascript/role-details.js"></script>
+
+
+</body>
+
+</html>

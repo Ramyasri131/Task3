@@ -1,0 +1,265 @@
+body {
+    margin-top: 0;
+    font-family: publicsans;
+    font-size: 12px;
+    display: flex;
+    background-color: #FCFCFC;
+    gap: 1rem;
+}
+
+/* side bar css */
+/* minimized role section */
+.minimized-roles {
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border-radius: 5px;
+    position: relative;
+}
+
+.roles {
+    background-color: var(--background);
+
+}
+
+#employee-tag .links {
+    margin-left: 0.2rem;
+}
+
+.install {
+    margin-top: 2rem;
+}
+
+/* main content */
+
+/* add-employee */
+
+.roles-employees {
+    display: flex;
+    gap: 1rem;
+    color: var(--gray-100);
+    font-weight: 600;
+}
+
+#role {
+    font-size: 15px;
+
+}
+
+#role a {
+    text-decoration: none;
+    color: #4d4e4e;
+}
+
+#role-right {
+    height: 0.6rem;
+    width: 0.6rem;
+}
+
+.color {
+    right: 0;
+    position: absolute;
+    margin-top: -1rem;
+}
+
+.add-employee-box {
+    background: var(--click);
+    height: 2rem;
+    width: 10rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.3rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    gap: 0.3rem;
+    border: none;
+    outline: none;
+    font-size: 12px;
+}
+
+.all-roles {
+    padding-top: 1rem;
+    color: var(--gray);
+}
+
+#export-icon {
+    width: 1rem;
+    height: 1rem;
+
+
+}
+
+.add-employee {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* role desc */
+#role-data {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.role-desc span {
+    color: var(--gray);
+    line-height: 1.3rem;
+}
+
+/* styling for content of page */
+
+.view-employees {
+    height: calc(100vh - 80px);
+    overflow: auto;
+}
+
+.view-employees::-webkit-scrollbar {
+    display: none;
+}
+
+.details-section {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.details-card {
+    display: flex;
+    padding: 1rem;
+    background: var(--white);
+    gap: 1rem;
+    width: 28.5%;
+    max-height: 20rem;
+    border-radius: 10px;
+    border: 1px solid var(--gray);
+    /* flex-wrap: wrap; */
+}
+
+.employee-details {
+    display: flex;
+}
+
+.employee-details img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.employee-name {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.employee-info {
+    padding: 0.5rem;
+    display: flex;
+    margin-top: 0.1rem;
+    flex-wrap: wrap;
+}
+
+.employee-info span {
+    color: #5f6570;
+    padding-left: 0.2rem;
+}
+
+.view {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    cursor: pointer;
+
+}
+
+.view img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.card-content {
+    width: 80%;
+}
+
+#emp-name {
+    font-weight: 600;
+}
+
+.main-section{
+    max-width:100%;
+    /* position: fixed; */
+}
+
+
+/* @media  screen and (max-width:1200px) {
+    #side-nav{
+        display:none;
+        position:fixed;
+       z-index:1;
+       height:100%;
+    }
+
+    .install{
+        display: none;
+    }
+    .main-section{
+        margin-left:0.05rem;
+    }
+    .all,#role-heading{
+        display:none;
+    }
+    .roles{
+        background-color:transparent;
+    }
+    .filter-section{
+       row-gap:1rem;
+    }
+    .dropdown{
+        width:40%;
+    }
+    .profile-name{
+        display: none;
+    }
+    .details-card {
+        width:40%;
+    }
+    .color{
+        display:none;
+    }
+}
+@media  screen and (max-width:900px) {
+    .details-card{
+        width:38%;
+    }
+    #hamburger-menu{
+        display:block;
+    }
+}
+@media  screen and (max-width:700px) {
+    .details-card{
+        width:35%;
+    }
+}
+@media  screen and (max-width:550px) {
+    .details-card{
+        width:30%;
+    }
+}
+@media  screen and (max-width:450px) {
+    
+    .card-content{
+        width:80%;
+    }
+    .details-card{
+        width:100%;
+    }
+} */
+@media screen  and (max-width:700px){
+    .details-card{
+        width:90%;
+    };
+} 

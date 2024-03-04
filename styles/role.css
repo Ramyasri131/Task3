@@ -1,0 +1,551 @@
+body {
+    margin-top: 0;
+    font-family: publicsans;
+    font-size: 12px;
+    background-color: #FCFCFC;
+}
+
+.main-section {
+    display: flex;
+    gap: 1rem;
+}
+
+.main-content {
+    width: 100%;
+
+}
+
+/* minimized role section */
+.minimized-roles {
+    display: flex;
+    gap: 1rem;
+    height: 2rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border-radius: 5px;
+    position: relative;
+}
+
+
+.roles {
+    background-color: var(--background);
+}
+
+#employee-tag .links {
+    margin-left: 0.2rem;
+}
+
+#employee-tag img {
+    width: 1.2rem;
+}
+
+.install {
+    margin-top: 2rem;
+}
+
+/* role section css */
+.role-desc {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.5rem;
+
+
+}
+
+#role-heading {
+    padding-left: 1rem;
+}
+
+.text-color {
+    color: var(--gray);
+}
+
+.add-role {
+    background-color: var(--click);
+    padding-top: 0.5rem;
+    width: 7rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    color: var(--white);
+    gap: 0.5rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+#add {
+    width: 1rem;
+    height: 1rem;
+}
+
+.role-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+/* filter section  */
+
+.filter-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    background-color: var(--background);
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    flex-wrap: wrap;
+
+}
+
+.filter-section-left {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+}
+
+.filter-btn {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#filter-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.dropdown {
+    border: 1px solid var(--border);
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.dropdown option[value=""][disabled] {
+    display: none;
+}
+
+.order-btn {
+    display: flex;
+    gap: 1rem;
+}
+
+#reset {
+    border: 1px solid var(--btn-color);
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+    color: var(--btn-color);
+    background: var(--white);
+    cursor: pointer;
+}
+
+#apply {
+    border: none;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 5px;
+    border-radius: 5px;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+#filter {
+    color: var(--red);
+}
+
+/* main content css */
+
+.role-container {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.role-card {
+    width: 25%;
+    background-color: var(--white);
+    padding: 2rem;
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.role-card a {
+    text-decoration: none;
+    color: black;
+}
+
+.role-name {
+    display: flex;
+    font-size: 15px;
+    font-weight: 700;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.color {
+    right: 0;
+    position: absolute;
+    margin-top: -1rem;
+}
+
+.department {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.dept {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.town {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.dept-name-color {
+    color: #5f6570;
+}
+
+.view-emp {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.view-emp img {
+    height: 1rem;
+
+}
+
+.editDetails {
+    cursor: pointer;
+}
+
+.total-emp {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+}
+
+.icons img {
+    height: 1rem;
+}
+
+#profile1 {
+    position: absolute;
+    z-index: 2;
+    left: 82%;
+}
+
+#profile2 {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    z-index: 3;
+    left: 85%;
+}
+
+#profile3 {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    z-index: 4;
+    left: 88%;
+}
+
+#profile4 {
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    z-index: 5;
+    left: 91%;
+}
+
+#total-cnt {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 10.2px;
+    left: 94%;
+    z-index: 7;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.add-role-page {
+    display: block;
+    height: calc(100vh - 80px);
+    overflow: auto;
+}
+
+.add-role-page::-webkit-scrollbar {
+    display: none;
+}
+
+/* add role page css */
+
+.add-role-form {
+    display: none;
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+.add-role-form::-webkit-scrollbar {
+    display: none;
+}
+
+.add-role-container {
+    margin-left: 0.5rem;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.page-heading {
+    font-size: 18px;
+    font-weight: 400;
+    padding-left: 0.5rem;
+}
+
+.employee-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.employee-details label {
+    font-weight: 500;
+}
+
+.employee-details input[type=text] {
+    width: 13rem;
+    height: 1.5rem;
+    outline: none;
+    border: 1px solid var(--gray);
+    border-radius: 3px;
+}
+
+.employee-details select {
+    width: 13rem;
+    height: 1.9rem;
+    border: 1px solid var(--gray);
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.employee-details select option[value=""][disabled] {
+    display: none;
+}
+
+
+.employee-details textarea {
+    width: 28.5rem;
+    /* width: max-content; */
+    height: 10rem;
+    resize: none;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid var(--gray);
+}
+
+.employee-details input[type=text]:focus,
+.employee-details select:focus,
+.employee-details textarea:focus {
+    border: 1px solid var(--outline);
+}
+
+.form-buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.form-buttons button {
+    height: 2rem;
+    width: 8rem;
+    border-radius: 5px;
+}
+
+.cancel-button {
+    border: none;
+    outline: none;
+    background: var(--background);
+    color: red;
+    cursor: pointer;
+}
+
+.submit-button {
+    border: none;
+    outline: none;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.edit-button {
+    border: none;
+    outline: none;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.save-button {
+    border: none;
+    outline: none;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+}
+
+.alert {
+    border: 1px solid red !important;
+}
+
+/* multiselect */
+.searchEmployee {
+    display: flex;
+    gap: 3rem;
+    background-color: white;
+    border: 1px solid var(--gray);
+    padding: 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-role-downarrow {
+    width: 1rem;
+    height: 1rem;
+}
+
+.asssign-employees-container {
+    display: none;
+    flex-direction: column;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 3px;
+    gap: 0.5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.assign-employee-details img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.assign-employee {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assign-employee-details {
+    display: flex;
+    gap: .1rem;
+    font-weight: 500;
+    font-size: 13.5px;
+}
+
+@media screen and (max-width:700px){
+    .role-card{
+        width:100%;
+    }
+    .employee-details textarea{
+        width:fit-content;
+    }
+}
+
+/* @media  screen and (max-width:1200px) {
+    #side-nav{
+        
+        display: none;
+        position:fixed;
+       z-index:8;
+       height:100%;
+    }
+     .color{
+        display: none;
+     }
+    .install{
+        display: none;
+    }
+    .main-content{
+        width:90%;
+    }
+    .all,#role-heading{
+        display:none;
+    }
+    .roles{
+        background-color:transparent;
+    }
+    .filter-section{
+       row-gap:1rem;
+    }
+    .dropdown{
+        width:40%;
+    }
+    .profile-name{
+        display: none;
+    }
+    .role-card {
+        width:40%;
+    }
+}
+@media  screen and (max-width:900px) {
+    .role-card{
+        width:38%;
+    }
+}
+@media  screen and (max-width:700px) {
+    .role-card{
+        width:35%;
+    }
+}
+@media  screen and (max-width:550px) {
+    .role-card{
+        width:30%;
+    }
+}
+@media  screen and (max-width:450px) {
+    .role-card{
+        width:25%;
+    }
+    #hamburger-menu{
+        display:block;
+    }
+} */
