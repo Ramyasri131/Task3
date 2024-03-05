@@ -47,7 +47,7 @@ body {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
-    width: 10%;
+    align-items: center;
 }
 
 .upload-btn {
@@ -65,6 +65,7 @@ body {
     border: none;
     outline: none;
     cursor: pointer;
+    align-items: center;
 }
 
 .personal-info {
@@ -162,6 +163,8 @@ input {
     justify-content: flex-end;
     /* padding-right:12rem; */
     gap: 1rem;
+    flex-wrap: wrap;
+
 }
 
 .error {
@@ -217,4 +220,21 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+@media screen and (max-width:439px){
+    #joinDate {
+        width: 9rem;
+      
+    }
+    
+    .form-heading select {
+        width: 10rem;
+    }
+    .form-heading{
+        margin-top: 0rem;
+    }
+    .name{
+        gap:0rem;
+    }
 }

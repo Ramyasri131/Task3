@@ -12,8 +12,9 @@ body {
 
 }
 
+
 .main-content {
-    width: 100%;
+    /* width: 78%; */
     font-family: albertsans;
 }
 
@@ -148,7 +149,7 @@ body {
 
 .add-employee {
     background: var(--click);
-    height: 2rem;
+    max-height: 2rem;
     width: 10rem;
     padding-top: 0.5rem;
     border-radius: 8px;
@@ -188,6 +189,7 @@ body {
     display: flex;
     gap: 0.2rem;
     flex-wrap: wrap;
+    
 }
 
 .btn-icon {
@@ -203,18 +205,16 @@ body {
 .btn-icon:hover {
     background: var(--click);
     color: var(--white);
-
 }
 
 .advance-filter-section {
     display: flex;
     background-color: var(--background);
     justify-content: space-between;
-    width: 97%;
     padding: 0.8rem;
     border: 1px solid var(--border);
     border-radius: 5px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
 }
 
 .filter-side {
@@ -231,6 +231,7 @@ body {
 .advance-filter {
     display: flex;
     gap: 1rem;
+    flex-wrap:wrap;
 }
 
 
@@ -307,7 +308,7 @@ body {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 5px;
     width: 100%;
-    height: calc(100vh - 301px);
+    /* height: calc(100vh - 301px); */
 }
 
 .alert-msg {
@@ -409,6 +410,7 @@ tbody {
 
 .table th {
     user-select: none;
+    white-space: nowrap;
 }
 
 .table th,
@@ -449,8 +451,8 @@ td {
 }
 
 .table-div {
-     overflow: auto; 
-    height: calc(100vh - 358px);
+    overflow: auto; 
+    /* height: calc(100vh - 358px); */
 
 }
 
@@ -488,9 +490,197 @@ td {
     border-bottom: 1px solid var(--gray);
 }
 
-@media screen and (max-width:700px){
+@media  screen and (max-width:922px) {
+    .changes-icon{
+        padding-top: 0rem;
+    }
+    .employee-section{
+        display:block;
+    }
+    /* .main-content{
+        width:100%;
+    } */
+
+}
+@media screen and (max-width:720px){
+  
+    .main-content{
+        width:90%;
+    }
+    .filter-section{
+        margin-top: 1rem;;
+    }
+    /* .advance-filter-section{
+        margin-top: 1rem;
+    } */
+    .minimized-side-nav{
+        display: flex;
+    }
+    #side-nav{
+        display: none;
+    }
+    #handle-logo{
+        transform: rotate(180deg);
+        margin-top:2rem;
+    }
+
+    /* .change-section{
+        height:1rem;
+    } */
+    .export{
+        font-size:8px;
+        height:1.5rem;
+        width:4rem;
+    }
+    .add-employee{
+        font-size:8px;
+        height:1.5rem;
+        width:6rem;
+    }
+    #export-icon{
+        height:0.5rem;
+        width:0.5rem;
+    }
+    #note {
+       
+        font-size: 10px;
+    }
+    
+    .employee-section p {
+        font-size: 10px;
+    }
+
+
+
+  
+
+}
+@media screen and (min-width:1100px){
+    .main-content{
+      width:100%;
+    }
+ 
+    
+}
+
+@media screen and (max-width:1100px) {
+    .table-div{
+        height: calc(100vh - 450px);
+    }
+    .btn-icon{
+        padding:0.4rem;
+        margin-left:0rem;
+    }
+}
+
+@media screen and (max-width:776px){
+  
+    .export{
+        font-size:8px;
+        height:1.5rem;
+        width:4rem;
+    }
+    .add-employee{
+        font-size:8px;
+        height:1.5rem;
+        width:6rem;
+    }
+    #export-icon{
+        height:0.5rem;
+        width:0.5rem;
+    }
+    .btn-icon{
+        padding:0rem;
+        margin-left:0rem;
+        font-size: 10px;
+    }
+    .advance-filter select{
+        /* display:none; */
+        width:5rem;
+        height:2rem;
+        font-size:10px;
+    }
+    .advance-filter-section button{
+        /* display:none; */
+        height:2rem;
+        font-size:10px;
+    }
+    .table th td{
+        font-size:10px;
+    }
+  
+   
+
+
+}
+@media screen and (max-width:462px){
+    .main-content{
+        width:100%;
+        /* width:85%; */
+    }
+    .add-employee{
+
+        font-size: 9px;
+    }
+   .advance-filter-section{
+    flex-wrap:wrap;
+    gap:0.5rem;
+   }
+   .advance-filter select{
+    width: 5rem;
+    font-size: 10px;
+
+   }
+   .advance-filter button{
+    width:3rem;
+    font-size: 7px;
+   
+}
+   
+}
+@media screen and (max-width:1024px)
+{
+    .btn-icon{
+        padding:0.43rem;
+        margin-left:0rem;
+    }
+    .roles{
+        padding-left:0rem;
+    }
+    .access-rights{
+        padding-left:0rem;
+    }
+    .minimized-side-nav .roles{
+        padding-left:1rem;
+
+    }
+    .minimized-side-nav .access-rights{
+        padding-left:1rem;
+
+    }
+    .all{
+        margin-top:1rem;
+    }
+}
+@media screen and (max-width:930px)
+{
+    .btn-icon{
+        padding:0.4rem;
+        margin-left:0rem;
+    }
+}
+
+/* @media screen and (max-width:700px){
     .changes-icon{
         padding-top:0rem;
     }
 }
+@media screen and (min-width:1450px){
+    .changes-icon{
+        padding-top:0rem;
+    }
+    .btn-icon{
+        width:2.35rem;
+    }
+} */
 

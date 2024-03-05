@@ -1,11 +1,11 @@
 @font-face {
     font-family: publicsans;
-    src: url(/assets/fonts/PublicSans-VariableFont_wght.ttf);
+    src: url(../../assets/fonts/PublicSans-VariableFont_wght.ttf);
 }
 
 @font-face {
     font-family: albertsans;
-    src: url(/assets/fonts/AlbertSans-VariableFont_wght.ttf);
+    src: url(../../assets/fonts/AlbertSans-VariableFont_wght.ttf);
 
 }
 
@@ -24,7 +24,8 @@
 }
 
 #side-nav {
-    max-width: 20%;
+    width: 20%;
+    height:100vh;
     background-color: var(--white);
     flex-direction: column;
     justify-content: space-between;
@@ -34,7 +35,7 @@
 
 /* minised icons  */
 .minimized-side-nav {
-    max-width: 5%;
+    max-width: 15%;
     background-color: var(--white);
     /* row-gap: 74px; */
     display: none;
@@ -143,11 +144,16 @@
 
 .roles {
     display: flex;
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
     height: 2rem;
     padding-top: 1rem;
     padding-left: 1rem;
     border-radius: 5px;
+    justify-content: space-between;
+}
+.role-navigation{
+    display: flex;
+    gap:0.5rem;
 }
 
 .role-icon {
@@ -169,12 +175,12 @@
 }
 
 #right-arrow {
-    padding-left: 6rem;
+    /* padding-left: 6rem; */
     height: 1rem;
 }
 
 #right-arrow2 {
-    padding-left: 3.5rem;
+    /* padding-left: 3.5rem; */
     height: 1rem;
 }
 
@@ -214,7 +220,8 @@
 .access-rights {
     display: flex;
     margin-top: 1rem;
-    gap: 0.5rem;
+    /* gap: 0.5rem; */
+    justify-content: space-between;
     padding-left: 1rem;
 }
 
@@ -280,24 +287,18 @@
     margin-top: 0.3rem;
 }
 
-#hamburger-menu {
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    display: none;
-}
-
-#hamburger-menu img {
-    width: 1rem;
-    height: 1rem;
-    margin-top: 0.3rem;
-
-}
 
 .profile {
     display: flex;
     position: relative;
+}
+.name-of-user{
+    margin:0rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .status {
@@ -323,18 +324,27 @@
 #down-arrow {
     width: 1rem;
     height: 1rem;
-    padding-left: 2rem;
+    /* padding-left: 2rem; */
     padding-top: 0.5rem;
     cursor: pointer;
 }
 
+@media screen and (max-width:720px){
+    .minimized-side-nav{
+        display: flex;
+    }
+    #side-nav{
+        display: none;
+    }
+  
+}
 
-@media screen and (max-width:900px) {
+/* @media screen and (max-width:900px) {
    
     #side-nav {
         display: none;
         z-index:10;
-        /* max-width: 50%; */
+        max-width: 50%;
     }
     .roles {
         background-color: transparent;
@@ -385,4 +395,4 @@
     #handle-logo{
         margin-left:-1rem;
     }
-}
+} */

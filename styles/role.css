@@ -447,6 +447,7 @@ body {
     padding: 0.5rem;
     border-radius: 3px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .add-role-downarrow {
@@ -483,13 +484,28 @@ body {
 
 @media screen and (max-width:700px){
     .role-card{
-        width:100%;
+        width:85%;
     }
     .employee-details textarea{
         width:fit-content;
     }
+    .filter-section{
+        gap:1rem;
+    }
+    /* .add-role-dropdown{
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+    } */
 }
 
+@media screen and (max-width:250px)
+{
+    .add-role{
+        /* height:3rem; */
+        font-size: 10px;
+    }
+}
 /* @media  screen and (max-width:1200px) {
     #side-nav{
         

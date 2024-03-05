@@ -23,16 +23,16 @@
                     <div class="minimized-roles">
                         <img src="assets/icons/Dashboard.svg" alt="dashboard" />
                     </div>
-                    <div class="minimized-roles">
+                    <a href="index.html" title="index.html"><div class="minimized-roles">
                         <div class="employee-tag-left">
                             <img src="assets/icons/team.svg" alt="employees-logo" />
                         </div>
-                    </div>
+                    </div></a>
                     <div class="roles-user">
                         <p id="role-heading">ROLE </p>
-                        <div class="minimized-roles">
+                        <a href="role.html" title="role.html"> <div class="minimized-roles">
                             <img src="assets/images/roles-icon.png" alt="roles-icon" class="role-icon" />
-                        </div>
+                        </div></a>    
                         <div class="access-rights">
                             <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
                         </div>
@@ -60,22 +60,21 @@
                 </a>
                 <div class="roles-user">
                     <p id="role-heading">ROLE / USER MANAGEMENT</p>
-                    <a href="role.html" title="Roles" class="links">
-                        <div class="roles">
-                            <img src="assets/images/roles-icon.png" alt="roles-icon" class="role-icon" />
-                            <span>Roles</span>
-                            <div class="color">
-                                <span>k</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" title="Access rights" class="links">
-                        <div class="access-rights">
-                            <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
-                            <span>Access right</span>
-                            <img src="assets/icons/rightarrow.png" id="right-arrow2" alt="right-arrow" />
-                        </div>
-                    </a>
+                    <a href="role.html" title="Roles" class="links"><div class="roles">
+                        <div class="role-navigation"><img src="assets/icons/Roles.svg" alt="roles-icon" class="role-icon" />
+                        <span>Roles</span>
+                         </div>
+                    <img src="assets/images/red-arrow.png" id="right-arrow" alt="right-arrow" />
+
+                    
+                    </div></a>
+                    <a href="#" title="Access rights" class="links"><div class="access-rights">
+                        <div class="role-navigation">
+                        <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
+                        <span>Access right</span>
+                    </div>
+                        <img src="assets/icons/rightarrow.png" id="right-arrow2" alt="right-arrow" />
+                    </div></a>
                 </div>
             </div>
             <div class="pop-up-box">
@@ -110,7 +109,7 @@
                         <div class="status"> </div>
                         <div class="profile-name">
                             <div>
-                                <span>John Abraham</span>
+                                <p class="name-of-user">John Abraham</p>
                                 <span id="admin">Admin</span>
                             </div>
                             <img src="assets/images/down-arrow.png" alt="down-arrow" id="down-arrow" />
@@ -139,7 +138,7 @@
                             <span id="filter">Filter</span>
                             <img src="assets/images/sort.png" alt="filter" id="filter-icon" />
                         </div>
-                        <div>
+                        <div class="add-role-dropdown">
                             <select name="department" class="dropdown" id="filterDepartment">
                                 <option value="" disabled selected>Department</option>
                                 <option value="UI/UX">UI/UX</option>

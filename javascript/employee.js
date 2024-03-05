@@ -5,8 +5,16 @@ window.onload = function () {
     roleDetails.forEach(r => {
         let newOption = new Option(r.roleName, r.roleName);
         document.getElementById("roleDropDown").add(newOption, undefined);
-
     })
+    let headerHeight = document.querySelector(".header").offsetHeight;
+    let descriptionHeight = document.querySelector(".employee-section").offsetHeight;
+    let filterHeight = document.querySelector(".filter-section").offsetHeight;
+    let advanceFilterHeight = document.querySelector(".advance-filter-section").offsetHeight;
+    let deleteSectionHeight = document.querySelector(".change-section").offsetHeight;
+    let totalHeight = headerHeight + descriptionHeight + filterHeight + advanceFilterHeight + deleteSectionHeight;
+    totalHeight +=50;
+    let tableHeight = "calc(100vh - " + totalHeight + "px)";
+    document.querySelector(".table-div").style.height = tableHeight;
 }
 
 createTable(employee);
@@ -85,32 +93,13 @@ function attachStatusOptionListners() {
                 if (cell.cellIndex === 6) {
                     let division = document.createElement("div");
                     if (cell.innerText == "In-Active") {
-                        cell.innerText = "";
-                        division.innerText = "Active";
-                        division.classList.add("active");
-                        cell.appendChild(division);
-                        icon.innerText = "Mark as In-Active";
-                        employee.forEach(r => {
-                            if (r.empNo == employeeId) {
-                                r.status = "Active";
-                            }
-                        })
-                        localStorage.setItem('employee', JSON.stringify(employee));
+                        changeStatus(cell,division,"Active","active",icon);
                     }
                     else if (cell.innerText == "Active") {
-                        cell.innerText = "";
-                        division.innerText = "In-Active";
-                        division.classList.add("in-active");
-                        cell.appendChild(division);
-                        icon.innerText = "Mark as Active";
-                        employee.forEach(r => {
-                            if (r.empNo == employeeId) {
-                                r.status = "In-Active";
-                            }
-                        })
-                        localStorage.setItem('employee', JSON.stringify(employee));
-
+                        changeStatus(cell,division,"In-Active","in-active",icon);
                     }
+                    localStorage.setItem('employee', JSON.stringify(employee));
+
                 }
 
             })
@@ -118,6 +107,20 @@ function attachStatusOptionListners() {
 
         })
     })
+}
+
+function changeStatus(cell,division,status,className,icon){
+    cell.innerText = "";
+    division.innerText = status;
+    division.classList.add(className);
+    cell.appendChild(division);
+    icon.innerText =  status=="Active" ? "Mark as In-Active" : "Mark as Active";
+    employee.forEach(r => {
+        if (r.empNo == employeeId) {
+            r.status = status;
+        }
+    })
+
 }
 
 //to enable and edit the details of an emoloyee

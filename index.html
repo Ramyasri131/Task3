@@ -22,16 +22,16 @@
                 <div class="roles">
                     <img src="assets/icons/Dashboard.svg" alt="dashboard" />
                 </div>
-                <div class="roles" >
+                <a href="index.html" title="Employee page"><div class="roles" >
                     <div class="employee-tag-left">
                         <img src="assets/icons/Employees.svg" alt="employees-logo" />    
                     </div>
-                </div>
+                </div></a>
              <div class="roles-user">
                 <p id="role-heading">ROLE </p>
-                <div class="roles">
+                <a href="role.html" title="role.html"><div class="roles">
                     <img src="assets/icons/Roles.svg" alt="roles-icon" class="role-icon" />
-                </div>
+                </div></a>
                 <div class="access-rights">
                     <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
                 </div>
@@ -62,13 +62,17 @@
                 <div class="roles-user">
                     <p id="role-heading">ROLE / USER MANAGEMENT</p>
                     <a href="role.html" title="Roles" class="links"><div class="roles">
-                        <img src="assets/icons/Roles.svg" alt="roles-icon" class="role-icon" />
+                        <div class="role-navigation"><img src="assets/icons/Roles.svg" alt="roles-icon" class="role-icon" />
                         <span>Roles</span>
+                         </div>
                         <img src="assets/icons/rightarrow.png" id="right-arrow" alt="right-arrow" />
+                    
                     </div></a>
                     <a href="#" title="Access rights" class="links"><div class="access-rights">
+                        <div class="role-navigation">
                         <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
                         <span>Access right</span>
+                    </div>
                         <img src="assets/icons/rightarrow.png" id="right-arrow2" alt="right-arrow" />
                     </div></a>
                 </div>
@@ -103,7 +107,7 @@
                         <div class="status"></div>
                         <div class="profile-name">
                             <div>
-                                <span>John Abraham</span>
+                                <p class="name-of-user">John Abraham</p>
                                 <span id="admin">Admin</span>
                             </div>
                             <img src="assets/images/down-arrow.png" alt="down-arrow" id="down-arrow" />
@@ -204,7 +208,7 @@
                     </div>
                     <div class="order-btn">
                         <div><button id="reset" onclick="resetFilters()">Reset</button></div>
-                        <div><button id="apply" onclick="applyDropDownFilters()">Apply </button></div>
+                        <div><button id="apply" onclick="applyDropDownFilter()">Apply </button></div>
                     </div>
                 </div>
 
@@ -299,35 +303,35 @@
                             <span>Personal information</span>
                             <div class="form-heading">
                                 <label>Emp No</label>
-                                <input type="text" placeholder="Text" class="user-input" id="empNo" onfocus="removeErrorMsg('validEmpNo',this)">
+                                <input type="text" placeholder="Text" class="user-input" id="empNo">
                                 <p id="validEmpNo"></p>
                             </div>
                             <div class="row-display name">
                                 <div class="form-heading">
                                     <label>First Name</label>
-                                    <input type="text" placeholder="Text" class="user-input" id="firstName" onfocus="removeErrorMsg('validFirstName',this)"/>
+                                    <input type="text" placeholder="Text" class="user-input" id="firstName"/>
                                     <p id="validFirstName" ></p>
                                 </div>
                                 <div class="form-heading">
                                     <label>Last Name</label>
-                                    <input type="text" placeholder="Text" class="user-input" id="lastName" onfocus="removeErrorMsg('validLastName',this)"/>
+                                    <input type="text" placeholder="Text" class="user-input" id="lastName"/>
                                     <p id="validLastName" ></p>
                                 </div>
                                 <div class="form-heading">
                                     <label>Date of Birth</label>
-                                    <input type="date" placeholder="Text" class="user-input" id="dateOfBirth" onfocus="removeErrorMsg('date-of-birth',this)"/>
+                                    <input type="date" placeholder="Text" class="user-input" id="dateOfBirth"/>
                                     <p id="date-of-birth"></p>
                                 </div>
                             </div>
                             <div class="row-display name">
                                 <div class="form-heading">
                                     <label>Email Id</label>
-                                    <input type="email" placeholder="joe.j@tezo.com" class="user-input" id="mailId" onfocus="removeErrorMsg('valid',this)"/>
+                                    <input type="email" placeholder="joe.j@tezo.com" class="user-input" id="mailId"/>
                                     <p id="valid"></p>
                                 </div>
                                 <div class="form-heading">
                                     <label>Mobile Number</label>
-                                    <input type="number" placeholder="0000000000" class="user-input" id="mobileNumber" pattern="[0-9]{10}" onfocus="removeErrorMsg('phone-number',this)"/>
+                                    <input type="number" placeholder="0000000000" class="user-input" id="mobileNumber" pattern="[0-9]{10}"/>
                                     <p id="phone-number"></p>
                                 </div>
                             </div>
@@ -414,8 +418,8 @@
             </main>  
         </div>
     </section>
-    <script type="text/javascript" src="javascript/common/common.js"></script>
-    <script type="text/javascript" src="javascript/employee.js"></script>
+    <script type="text/javascript" src="javascript/common/common.js" defer></script>
+    <script type="text/javascript" src="javascript/employee.js" defer></script>
     
 </body>
 </html>
