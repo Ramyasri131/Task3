@@ -224,11 +224,11 @@ body {
 
 }
 
-/* .details {
+.details {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-} */
+}
 
 .page-heading {
     font-size: 18px;
@@ -341,7 +341,8 @@ body {
 /* multiselect */
 .searchEmployee {
     display: flex;
-    width:45%;
+    /* width:45%; */
+    /* width:100%; */
     gap: 3rem;
     background-color: white;
     border: 1px solid var(--gray);
@@ -359,7 +360,7 @@ body {
 .asssign-employees-container {
     display: none;
     flex-direction: column;
-    width:45%;
+    /* width:45%; */
     background-color: white;
     padding: 0.5rem;
     border-radius: 3px;
