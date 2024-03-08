@@ -9,6 +9,11 @@ body {
 
 /* side bar css */
 /* minimized role section */
+.roles {
+    background-color: var(--background);
+
+}
+
 .minimized-roles {
     display: flex;
     gap: 1rem;
@@ -19,10 +24,7 @@ body {
     position: relative;
 }
 
-.roles {
-    background-color: var(--background);
 
-}
 
 #employee-tag .links {
     margin-left: 0.2rem;
@@ -94,6 +96,11 @@ body {
 
 }
 
+.main-section {
+    display: flex;
+    gap: 1rem;
+}
+
 .add-employee {
     margin-top: 1rem;
     display: flex;
@@ -141,11 +148,11 @@ body {
     /* flex-wrap: wrap; */
 }
 
-.employee-details {
+.employee-card-details {
     display: flex;
 }
 
-.employee-details img {
+.employee-card-details img {
     width: 2rem;
     height: 2rem;
 }
@@ -156,14 +163,14 @@ body {
     padding-left: 1rem;
 }
 
-.employee-info {
+.employee-information {
     padding: 0.5rem;
     display: flex;
     margin-top: 0.1rem;
     flex-wrap: wrap;
 }
 
-.employee-info span {
+.employee-information span {
     color: #5f6570;
     padding-left: 0.2rem;
 }
@@ -189,9 +196,192 @@ body {
     font-weight: 600;
 }
 
-.main-section{
-    max-width:100%;
+.main-content {
+    /* display: flex; */
+    width: 78%;
     /* position: fixed; */
+}
+
+/* add employee form */
+
+.add-role-form {
+    /* width:100%; */
+    display: none;
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+.add-role-form::-webkit-scrollbar {
+    display: none;
+}
+
+.add-role-container {
+    margin-left: 0.5rem;
+    /* width: 100%; */
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* .details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+} */
+
+.page-heading {
+    font-size: 18px;
+    font-weight: 400;
+    padding-left: 0.5rem;
+}
+
+.employee-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.employee-details label {
+    font-weight: 500;
+}
+
+.employee-details input[type=text] {
+    width: 13rem;
+    height: 1.5rem;
+    outline: none;
+    border: 1px solid var(--gray);
+    border-radius: 3px;
+}
+
+.employee-details select {
+    width: 13rem;
+    height: 1.9rem;
+    border: 1px solid var(--gray);
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.employee-details select option[value=""][disabled] {
+    display: none;
+}
+
+
+.employee-details textarea {
+    width: 28.5rem;
+    /* width: max-content; */
+    height: 10rem;
+    resize: none;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid var(--gray);
+}
+
+
+.employee-details input[type=text]:focus,
+.employee-details select:focus,
+.employee-details textarea:focus {
+    border: 1px solid var(--outline);
+}
+
+.form-buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.form-buttons button {
+    height: 2rem;
+    width: 8rem;
+    border-radius: 5px;
+}
+
+.cancel-button {
+    border: none;
+    outline: none;
+    background: var(--background);
+    color: red;
+    cursor: pointer;
+}
+
+.submit-button {
+    border: none;
+    outline: none;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.edit-button {
+    border: none;
+    outline: none;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.save-button {
+    border: none;
+    outline: none;
+    background: var(--click);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+}
+
+.alert {
+    border: 1px solid red !important;
+}
+
+/* multiselect */
+.searchEmployee {
+    display: flex;
+    width:45%;
+    gap: 3rem;
+    background-color: white;
+    border: 1px solid var(--gray);
+    padding: 0.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.add-role-downarrow {
+    width: 1rem !important;
+    height: 1rem !important;
+}
+
+.asssign-employees-container {
+    display: none;
+    flex-direction: column;
+    width:45%;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 3px;
+    gap: 0.5rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.assign-employee-details img {
+    width: 1rem;
+    height: 1rem;
+}
+
+.assign-employee {
+    display: flex;
+    justify-content: space-between;
+}
+
+.assign-employee-details {
+    display: flex;
+    gap: .1rem;
+    font-weight: 500;
+    font-size: 13.5px;
 }
 
 
@@ -206,7 +396,7 @@ body {
     .install{
         display: none;
     }
-    .main-section{
+    .main-content{
         margin-left:0.05rem;
     }
     .all,#role-heading{
@@ -258,14 +448,18 @@ body {
         width:100%;
     }
 } */
-@media screen  and (max-width:700px){
-    .details-card{
-        width:90%;
-    };
-} 
+@media screen and (max-width:700px) {
+    .details-card {
+        width: 90%;
+    }
 
-@media screen  and (max-width:400px){
-    .add-employee-box{
-        width:14rem;
-    };
-} 
+    ;
+}
+
+@media screen and (max-width:400px) {
+    .add-employee-box {
+        width: 14rem;
+    }
+
+    ;
+}

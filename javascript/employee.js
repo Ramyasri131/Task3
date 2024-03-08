@@ -1,23 +1,12 @@
-//disabling joining date in form and role drop down using data in role details page
-window.onload = function () {
-    var today = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-    document.getElementsByName("todaysdate")[0].setAttribute('min', today);
-    roleDetails.forEach(r => {
-        let newOption = new Option(r.roleName, r.roleName);
-        document.getElementById("roleDropDown").add(newOption, undefined);
-    })
-    let headerHeight = document.querySelector(".header").offsetHeight;
-    let descriptionHeight = document.querySelector(".employee-section").offsetHeight;
-    let filterHeight = document.querySelector(".filter-section").offsetHeight;
-    let advanceFilterHeight = document.querySelector(".advance-filter-section").offsetHeight;
-    let deleteSectionHeight = document.querySelector(".change-section").offsetHeight;
-    let totalHeight = headerHeight + descriptionHeight + filterHeight + advanceFilterHeight + deleteSectionHeight;
-    totalHeight +=50;
-    let tableHeight = "calc(100vh - " + totalHeight + "px)";
-    document.querySelector(".table-div").style.height = tableHeight;
-}
 
+employee = JSON.parse(localStorage.getItem('employee'));
 createTable(employee);
+roleDetails = JSON.parse(localStorage.getItem('roleDetails'));
+
+roleDetails.forEach(r => {
+    let newOption = new Option(r.roleName, r.roleName);
+    document.getElementById("roleDropDown").add(newOption, undefined);
+})
 attachStatusOptionListners();
 
 // creating table
@@ -27,7 +16,7 @@ function createTable(data) {
     let i;
     for (i = 0; i < data.length; i++) {
         let tableRow = document.createElement("tr");
-        tableRow.classList.add("row");  
+        tableRow.classList.add("row");
         tableRow.innerHTML += `<td class="details"><input type="checkbox" class="check-box"onclick="enableCheckBox()"></td>
      <td class="details">
      <div class="user-data">
@@ -60,7 +49,7 @@ function createTable(data) {
         <div class="hidden-options" onclick="displayhiddenOptions(this)">
             <img src="assets/images/dots.png" alt="more-icon" class="more">
             <div class="options">
-               <div class="edit-employee">Edit</div>
+               <div class="edit-employee">View</div>
                <div onclick="deleteRow(this)" class="deleteSelectedRow">Delete</div>
                <div class="status-option">Mark as ${data[i].status === 'In-Active' ? 'Active' : 'In-Active'}</div>
             </div>
@@ -93,10 +82,10 @@ function attachStatusOptionListners() {
                 if (cell.cellIndex === 6) {
                     let division = document.createElement("div");
                     if (cell.innerText == "In-Active") {
-                        changeStatus(cell,division,"Active","active",icon);
+                        changeStatus(cell, division, "Active", "active", icon, employeeId);
                     }
                     else if (cell.innerText == "Active") {
-                        changeStatus(cell,division,"In-Active","in-active",icon);
+                        changeStatus(cell, division, "In-Active", "in-active", icon, employeeId);
                     }
                     localStorage.setItem('employee', JSON.stringify(employee));
 
@@ -109,12 +98,12 @@ function attachStatusOptionListners() {
     })
 }
 
-function changeStatus(cell,division,status,className,icon){
+function changeStatus(cell, division, status, className, icon, employeeId) {
     cell.innerText = "";
     division.innerText = status;
     division.classList.add(className);
     cell.appendChild(division);
-    icon.innerText =  status=="Active" ? "Mark as In-Active" : "Mark as Active";
+    icon.innerText = status == "Active" ? "Mark as In-Active" : "Mark as Active";
     employee.forEach(r => {
         if (r.empNo == employeeId) {
             r.status = status;
@@ -243,16 +232,16 @@ function addEditListner() {
                     else {
                         disableInputFields(lastName, lname);
                     }
-                    document.getElementById("display-image").src=r.employeeImg;
+                    document.getElementById("display-image").src = r.employeeImg;
                     disableInputFields(firstName, fname);
                     disableInputFields(id, r.empNo);
-                    document.querySelector(".upload-btn").addEventListener("change",function(event){
-                        let imgdisplay=document.getElementById("display-image");
+                    document.querySelector(".upload-btn").addEventListener("change", function (event) {
+                        let imgdisplay = document.getElementById("display-image");
                         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
-                        let reader=new FileReader();
-                        reader.onload = function(){
-                             imageData=reader.result;
-                
+                        let reader = new FileReader();
+                        reader.onload = function () {
+                            imageData = reader.result;
+
                         }
                         reader.readAsDataURL(event.target.files[0]);
                     })
@@ -339,13 +328,12 @@ function openEmployeeForm() {
         document.getElementById(r).disabled = false;
         document.getElementById(r).value = "";
     })
-    document.querySelector(".upload-btn").addEventListener("change",function(event){
-        let imgdisplay=document.getElementById("display-image");
+    document.querySelector(".upload-btn").addEventListener("change", function (event) {
+        let imgdisplay = document.getElementById("display-image");
         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
-        let reader=new FileReader();
-        reader.onload = function(){
-             imageData=reader.result;
-
+        let reader = new FileReader();
+        reader.onload = function () {
+            imageData = reader.result;
         }
         reader.readAsDataURL(event.target.files[0]);
     })
@@ -394,7 +382,7 @@ function searchTable(input) {
         col.forEach(cell => {
             if (cell.cellIndex === 1) {
                 let image = cell.querySelector("img");
-                rowData["employeeImg"] = image.src; 
+                rowData["employeeImg"] = image.src;
                 let userdata = cell.innerText.trim();
                 let [name, email] = userdata.split("\n");
                 rowData["Name"] = name;
@@ -746,7 +734,7 @@ function SubmitEmployeeDetails(event) {
     }
     else {
         let formData = {
-            employeeImg:imageData ? imageData : "assets/images/upload-image.png",
+            employeeImg: imageData ? imageData : "assets/images/upload-image.png",
             Name: document.getElementById(formInputs[1]).value + " " + document.getElementById(formInputs[2]).value,
             mailId: document.getElementById(formInputs[4]).value,
             location: document.getElementById(formInputs[7]).value,
@@ -768,7 +756,14 @@ function SubmitEmployeeDetails(event) {
         applyDropDownFilter();
         formInputs.forEach(ele => {
             document.getElementById(ele).value = "";
+            document.getElementById(ele).classList.remove('error');
         })
+        let list2 = ['validEmpNo', "validFirstName", "validLastName", "date-of-birth", "valid", "phone-number", "date-of-join", "city", "role-error", "dept", "manager", "project"];
+        list2.forEach(ele => {
+            document.getElementById(ele).innerText = "";
+        })
+        let imgdisplay = document.getElementById("display-image");
+        imgdisplay.src = "assets/images/upload-image.png";
         document.querySelector(".employeetable-container").style.display = "block";
         document.querySelector(".form-container").style.display = "none";
         event.preventDefault();
@@ -819,27 +814,27 @@ function resetFilters() {
 }
 
 //export file to excel
-function exportToExcel(){
-   let table=document.getElementById("employeeTable");
-   let tableContent;
-   let headData=table.querySelectorAll(".table-header");
-   console.log(headData);
-   headData.forEach(r=>{
-    let cells=r.querySelectorAll("th");
-    cells.forEach((ele,index)=>{
-       tableContent += '"' + (ele.innerText || '').replace(/"/g, '""') + '"' + (index < cells.length - 1 ? ',' : '\n');
+function exportToExcel() {
+    let table = document.getElementById("employeeTable");
+    let tableContent;
+    let headData = table.querySelectorAll(".table-header");
+    console.log(headData);
+    headData.forEach(r => {
+        let cells = r.querySelectorAll("th");
+        cells.forEach((ele, index) => {
+            tableContent += '"' + (ele.innerText || '').replace(/"/g, '""') + '"' + (index < cells.length - 1 ? ',' : '\n');
+        })
     })
-  })
-   let row=table.querySelectorAll(".row");
-   row.forEach(r=>{
-     let cells=r.querySelectorAll("td","th");
-     cells.forEach((ele,index)=>{
-        tableContent += '"' + (ele.innerText || '').replace(/"/g, '""') + '"' + (index < cells.length - 1 ? ',' : '\n');
-     })
-   })
-   let tableSheet= 'data:text/csv;charset=utf-8,' + encodeURIComponent(tableContent);
-   let downloadlink = document.createElement("a");
-   downloadlink.href=tableSheet;
-   downloadlink.download='employee_data.csv';
-   downloadlink.click();
+    let row = table.querySelectorAll(".row");
+    row.forEach(r => {
+        let cells = r.querySelectorAll("td", "th");
+        cells.forEach((ele, index) => {
+            tableContent += '"' + (ele.innerText || '').replace(/"/g, '""') + '"' + (index < cells.length - 1 ? ',' : '\n');
+        })
+    })
+    let tableSheet = 'data:text/csv;charset=utf-8,' + encodeURIComponent(tableContent);
+    let downloadlink = document.createElement("a");
+    downloadlink.href = tableSheet;
+    downloadlink.download = 'employee_data.csv';
+    downloadlink.click();
 }

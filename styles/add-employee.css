@@ -222,19 +222,21 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-@media screen and (max-width:439px){
+@media screen and (max-width:439px) {
     #joinDate {
         width: 9rem;
-      
+
     }
-    
+
     .form-heading select {
         width: 10rem;
     }
-    .form-heading{
+
+    .form-heading {
         margin-top: 0rem;
     }
-    .name{
-        gap:0rem;
+
+    .name {
+        gap: 0rem;
     }
 }

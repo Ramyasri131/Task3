@@ -1,4 +1,16 @@
+roleDetails = JSON.parse(localStorage.getItem('roleDetails'));
+
+employee = JSON.parse(localStorage.getItem('employee'));
 createCards(roleDetails);
+
+document.addEventListener("click", (event) => {
+    let target = event.target;
+    if (target.className != "asssign-employees-container" && target.className != "searchEmployee" && target.className != "assign-employee" && target.className != "assign-employee-details" && target.className != "check-employee" && target.className != "employee-check-box") {
+        if (document.querySelector(".asssign-employees-container").style.display == "flex") {
+            showUnassignedEmployees();
+        }
+    }
+})
 
 // to display the form
 function displayAddRoleForm() {
@@ -25,9 +37,15 @@ function getLocationBasedEmployees() {
     collectUnassignedEmployees("addRole");
 }
 
+document.getElementById("location-dropdown").addEventListener("change", function () {
+    getLocationBasedEmployees();
+});
+
 let unassignedEmployee = [];
 function collectUnassignedEmployees(pageType) {
+    document.getElementById("assign-employee-section").innerHTML = "";
     let inputLocation = document.getElementById("location-dropdown").value;
+    let a = 0;
     employee.forEach(r => {
         if (r.role == "N/A" && r.location == inputLocation) {
             let assignEmployeeDiv = document.createElement("div");
@@ -36,17 +54,24 @@ function collectUnassignedEmployees(pageType) {
             assignEmployeeDetails.classList.add("assign-employee-details");
             let assignEmployeeImg = document.createElement("img");
             assignEmployeeImg.src = "assets/images/profie-icon.png";
-            let employeeName = document.createElement("span");
+            let employeeName = document.createElement("label");
+            employeeName.classList.add("check-employee");
             employeeName.innerText = r.Name;
+            employeeName.setAttribute("for", "chekCheckBox" + a);
             assignEmployeeDetails.appendChild(assignEmployeeImg);
             assignEmployeeDetails.appendChild(employeeName);
             let check = document.createElement("INPUT");
             check.setAttribute("type", "checkbox");
             check.classList.add("employee-check-box");
+            check.setAttribute('id', "chekCheckBox" + a);
             let id = r.empNo;
             check.onchange = function () {
                 checkUnassignedEmployees(this, id);
             };
+            // document.querySelector(".assign-employee").addEventListener("change",function (){
+            //     checkUnassignedEmployees(this, id);
+            // });
+            a++;
             assignEmployeeDiv.appendChild(assignEmployeeDetails);
             assignEmployeeDiv.appendChild(check);
             document.getElementById("assign-employee-section").appendChild(assignEmployeeDiv);
@@ -62,19 +87,26 @@ function collectUnassignedEmployees(pageType) {
                 assignEmployeeDetails.classList.add("assign-employee-details");
                 let assignEmployeeImg = document.createElement("img");
                 assignEmployeeImg.src = "assets/images/profie-icon.png";
-                let employeeName = document.createElement("span");
+                let employeeName = document.createElement("label");
                 employeeName.innerText = r.Name;
+                employeeName.classList.add("check-employee");
+                employeeName.setAttribute("for", "chekCheckBox" + a);
                 assignEmployeeDetails.appendChild(assignEmployeeImg);
                 assignEmployeeDetails.appendChild(employeeName);
                 let check = document.createElement("INPUT");
                 check.setAttribute("type", "checkbox");
                 check.classList.add("employee-check-box");
+                check.setAttribute('id', "chekCheckBox" + a);
                 let id = r.empNo;
                 check.checked = true;
                 unassignedEmployee.push(id);
                 check.onchange = function () {
                     checkUnassignedEmployees(this, id);
                 };
+                // document.querySelector(".assign-employee").addEventListener("change",function (){
+                //     checkUnassignedEmployees(this, id);
+                // });
+                a++;
                 assignEmployeeDiv.appendChild(assignEmployeeDetails);
                 assignEmployeeDiv.appendChild(check);
                 document.getElementById("assign-employee-section").appendChild(assignEmployeeDiv);
@@ -83,6 +115,14 @@ function collectUnassignedEmployees(pageType) {
     }
 }
 
+// document.querySelectorAll(".assign-employee").forEach(ele=>{
+//     ele.addEventListener("change",function (){
+//         checkUnassignedEmployees(this, id);
+//         document.getElementById("myCheck").checked = true;
+
+// })
+
+// });
 
 let visible = false;
 function showUnassignedEmployees() {
@@ -120,6 +160,7 @@ function submitRoleDetails(event) {
     let inputRole = document.getElementById("role-name-input");
     let inputDepartment = document.getElementById("department-dropdown");
     let inputLocation = document.getElementById("location-dropdown");
+    let inputDescription = document.getElementById("description");
     let isInvalid = 0;
     if (inputRole.value == "") {
         inputRole.classList.add("alert");
@@ -140,18 +181,22 @@ function submitRoleDetails(event) {
         isInvalid = 1;
     }
     roleDetails.forEach(r => {
-        if (r.roleName == inputRole.value) {
-            inputRole.classList.add("alert");
-            document.getElementById("valid-role").innerText = "Role already exists";
-            document.getElementById("valid-role").classList.add("error");
-            isInvalid = 1;
+        if (r.location == inputLocation.value) {
+            if (r.roleName == inputRole.value) {
+                inputRole.classList.add("alert");
+                document.getElementById("valid-role").innerText = "Role already exists";
+                document.getElementById("valid-role").classList.add("error");
+                isInvalid = 1;
+            }
         }
+
     })
     if (isInvalid == 0) {
         let roleName = inputRole.value;
         let department = inputDepartment.value;
         let location = inputLocation.value;
-        let arr = { roleName, department, location };
+        let description = inputDescription.value;
+        let arr = { roleName, department, location, description };
         roleDetails.push(arr);
         let container = document.getElementById("card-container");
         container.innerHTML = " ";
@@ -208,7 +253,6 @@ function clearFeilds() {
 }
 
 //create cards 
-
 function createCards(roleDetails) {
     roleDetails.forEach(r => {
         let container = document.getElementById("card-container");
@@ -250,7 +294,7 @@ function createCards(roleDetails) {
         let cityNameContainer = document.createElement("div");
         cityNameContainer.classList.add("dept");
         let cityImage = document.createElement("img");
-        cityImage.src = "assets/icons/location-pin-alt-1_svgrepo.com.svg";
+        cityImage.src = "assets/icons/location.svg";
         cityNameContainer.appendChild(cityImage);
         let cityHeading = document.createElement("span");
         cityHeading.innerText = "Location";
@@ -272,9 +316,9 @@ function createCards(roleDetails) {
         let profieIconsContainer = document.createElement("div");
         profieIconsContainer.classList.add("icons");
         let cnt = 0;
-        let displayImages=[];
+        let displayImages = [];
         employee.forEach(ele => {
-            if (ele.role == r.roleName) {
+            if (ele.role == r.roleName && ele.location == r.location) {
                 displayImages.push(ele.employeeImg);
                 cnt++;
             }
@@ -324,10 +368,11 @@ function createCards(roleDetails) {
         division.appendChild(totalEmployeeDivision);
         division.appendChild(link);
         container.appendChild(division);
-       
+
     })
     addViewEmployeeListner();
     addListnerToEditIcon();
+
 }
 
 let selectedOptions = ["", ""];
@@ -362,10 +407,21 @@ function applyFilters() {
 function addViewEmployeeListner() {
     document.querySelectorAll(".view-emp").forEach(r => {
         r.addEventListener("click", function () {
+            let row = r.parentElement.querySelector(".role-name");
+            let cityName = r.parentElement.querySelector(".town").querySelector(".dept-name-color");
+            let desc;
+            roleDetails.forEach(a => {
+                if (a.roleName == row.innerText) {
+                    desc = a.description;
+                }
+            })
+            let viewRole = { roleName: row.innerText, cityName: cityName.innerText, description: desc };
+            viewRole = localStorage.setItem('viewRole', JSON.stringify(viewRole));
             location.href = "/roledetails.html";
         })
     })
 }
+
 
 
 // addListnerToEditIcon();
@@ -393,7 +449,8 @@ function addListnerToEditIcon() {
             inputRole.disabled = true;
             inputDepartment.disabled = true;
             inputLocation.disabled = true;
-         collectUnassignedEmployees("edit");
+            collectUnassignedEmployees("edit");
+            document.querySelector(".searchEmployee").style.pointerEvents = "none";
             document.getElementById("description").disabled = true;
         })
 
@@ -408,6 +465,7 @@ function editRoleDetails(event) {
     let inputLocation = document.getElementById("location-dropdown");
     inputDepartment.disabled = false;
     document.getElementById("description").disabled = false;
+    document.querySelector(".searchEmployee").style.pointerEvents = "auto";
     document.querySelector(".edit-button").style.display = "none";
     document.querySelector(".submit-button").style.display = "none";
     document.querySelector(".save-button").style.display = "block";
@@ -443,8 +501,8 @@ function saveRoleDetails(event) {
 }
 
 function reset() {
-    let deptValue = document.getElementById("filterDepartment").value="";
-    let locationValue = document.getElementById("filterLocation").value="";
+    let deptValue = document.getElementById("filterDepartment").value = "";
+    let locationValue = document.getElementById("filterLocation").value = "";
     document.querySelector(".role-container").innerHTML = "";
     createCards(roleDetails);
 }

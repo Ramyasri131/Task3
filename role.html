@@ -16,23 +16,27 @@
         <aside class="minimized-side-nav">
             <div class="minimized-icons">
                 <div class="minimized-logo">
-                    <img src="assets/images/TezoLogo-minimized.png" alt="tezo-logo" />
+                    <img src="assets/images/minimized-tezo-logo.png" alt="tezo-logo" />
                 </div>
                 <div class="vertical-icons">
                     <p class="all" id="defintion">ALL</p>
                     <div class="minimized-roles">
-                        <img src="assets/icons/Dashboard.svg" alt="dashboard" />
+                        <img src="assets/icons/dashboard.svg" alt="dashboard" />
                     </div>
-                    <a href="index.html" title="index.html"><div class="minimized-roles">
-                        <div class="employee-tag-left">
-                            <img src="assets/icons/team.svg" alt="employees-logo" />
+                    <a href="index.html" title="index.html">
+                        <div class="minimized-roles">
+                            <div class="employee-tag-left">
+                                <img src="assets/icons/team.svg" alt="employees-logo" />
+                            </div>
                         </div>
-                    </div></a>
+                    </a>
                     <div class="roles-user">
                         <p id="role-heading">ROLE </p>
-                        <a href="role.html" title="role.html"> <div class="minimized-roles">
-                            <img src="assets/images/roles-icon.png" alt="roles-icon" class="role-icon" />
-                        </div></a>    
+                        <a href="role.html" title="role.html">
+                            <div class="minimized-roles">
+                                <img src="assets/images/roles-icon.png" alt="roles-icon" class="role-icon" />
+                            </div>
+                        </a>
                         <div class="access-rights">
                             <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
                         </div>
@@ -43,12 +47,12 @@
         <aside id="side-nav">
             <div class="side-bar">
                 <div class="logo">
-                    <img src="assets/images/TezoLogo.png" id="tezoLogo" alt="tezo-logo" />
+                    <img src="assets/images/tezo-logo.png" id="tezoLogo" alt="tezo-logo" />
                 </div>
                 <p class="all" id="defintion">ALL</p>
                 <a href="role.html" title="Dashboard" class="links">
                     <div class="dashboard">
-                        <img src="assets/icons/Dashboard.svg" alt="dashboard" />
+                        <img src="assets/icons/dashboard.svg" alt="dashboard" />
                         <span>Dashboard</span>
                     </div>
                 </a>
@@ -60,21 +64,26 @@
                 </a>
                 <div class="roles-user">
                     <p id="role-heading">ROLE / USER MANAGEMENT</p>
-                    <a href="role.html" title="Roles" class="links"><div class="roles">
-                        <div class="role-navigation"><img src="assets/icons/Roles.svg" alt="roles-icon" class="role-icon" />
-                        <span>Roles</span>
-                         </div>
-                    <img src="assets/images/red-arrow.png" id="right-arrow" alt="right-arrow" />
+                    <a href="role.html" title="Roles" class="links">
+                        <div class="roles">
+                            <div class="role-navigation"><img src="assets/icons/roles.svg" alt="roles-icon"
+                                    class="role-icon" />
+                                <span>Roles</span>
+                            </div>
+                            <img src="assets/images/red-arrow.png" id="right-arrow" alt="right-arrow" />
 
-                    
-                    </div></a>
-                    <a href="#" title="Access rights" class="links"><div class="access-rights">
-                        <div class="role-navigation">
-                        <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
-                        <span>Access right</span>
-                    </div>
-                        <img src="assets/icons/rightarrow.png" id="right-arrow2" alt="right-arrow" />
-                    </div></a>
+
+                        </div>
+                    </a>
+                    <a href="#" title="Access rights" class="links">
+                        <div class="access-rights">
+                            <div class="role-navigation">
+                                <img src="assets/icons/assign-user.svg" alt="assign_user" class="role-icon" />
+                                <span>Access right</span>
+                            </div>
+                            <img src="assets/icons/rightarrow.png" id="right-arrow2" alt="right-arrow" />
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="pop-up-box">
@@ -96,13 +105,13 @@
                 <div> <button type="submit" id="handle-logo" onclick="toggleSideBar()"> <img
                             src="assets/images/handle.png" alt="handle" /></button> </div>
                 <div class="search-bar">
-                    <img src="assets/images/bx-search.png" alt="search-icon" id="search" />
+                    <img src="assets/images/search.png" alt="search-icon" id="search" />
                     <input type="text" name="searchbar" placeholder="Search" size="70">
                     <div class="header-icon">
-                        <img src="assets/icons/Language.svg" alt="lang-logo" />
-                        <img src="assets/icons/Categories.svg" alt="category" />
-                        <img src="assets/icons/Mode.svg" alt="mode" />
-                        <img src="assets/icons/Notifications.svg" alt="notifications" />
+                        <img src="assets/icons/language.svg" alt="lang-logo" />
+                        <img src="assets/icons/categories.svg" alt="category" />
+                        <img src="assets/icons/mode.svg" alt="mode" />
+                        <img src="assets/icons/notifications.svg" alt="notifications" />
                     </div>
                     <div class="profile">
                         <img src="assets/images/profie-icon.png" alt="profile-icon" />
@@ -126,7 +135,7 @@
                         <span class="text-color">All the roles are configured here</span>
                     </div>
                     <button class="add-role" onclick="displayAddRoleForm()">
-                        <img src="assets/icons/Add.svg" alt="add" id="add" />
+                        <img src="assets/icons/add.svg" alt="add" id="add" />
                         <span>Add Role</span>
                     </button>
                 </div>
@@ -198,7 +207,7 @@
                         <div class="details">
                             <div class="employee-details">
                                 <label>Location</label>
-                                <select name="department" id="location-dropdown" onchange="getLocationBasedEmployees()">
+                                <select name="department" id="location-dropdown">
                                     <option value="" disabled selected>Location</option>
                                     <option value="Hyderabad">Hyderabad</option>
                                     <option value="Banglore">Banglore</option>
@@ -211,7 +220,7 @@
                             <div class="employee-details">
                                 <label>Assign Employees</label>
                                 <div class="searchEmployee" onclick="showUnassignedEmployees()">
-                                    <span>Search for an Employee</span>
+                                    Search for an Employee
                                     <img src="assets/images/down-arrow.png" alt="down-arrow"
                                         class="add-role-downarrow" />
                                 </div>
@@ -236,11 +245,14 @@
                     </div>
                 </form>
             </main>
+
         </div>
 
     </section>
     <script type="text/javascript" src="javascript/common/common.js"></script>
+    <!-- <script type="text/javascript" src="javascript/role-details.js"></script> -->
     <script type="text/javascript" src="javascript/role.js"></script>
+
 
 </body>
 
