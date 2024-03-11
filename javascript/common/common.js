@@ -1,6 +1,6 @@
 var employeeMockData = [
     {
-        employeeImg: "assets/images/profie-icon.png",
+        employeeImg: "../assets/images/profie-icon.png",
         Name: "Edger Jones",
         mailId: "edger@tezo.com",
         location: "Hyderabad",
@@ -15,7 +15,7 @@ var employeeMockData = [
         number: 9876543210
     },
     {
-        employeeImg: "assets/images/profie-icon.png",
+        employeeImg: "../assets/images/profie-icon.png",
         Name: "Sandeep d",
         mailId: "sandeep.d@tezo.com",
         location: "Banglore",
@@ -30,7 +30,7 @@ var employeeMockData = [
         number: 9876543210
     },
     {
-        employeeImg: "assets/images/profie-icon.png",
+        employeeImg: "../assets/images/profie-icon.png",
         Name: "Test d",
         mailId: "sandeep.d@tezo.com",
         location: "Banglore",
@@ -45,7 +45,7 @@ var employeeMockData = [
         number: 9876543210
     },
     {
-        employeeImg: "assets/images/profie-icon.png",
+        employeeImg: "../assets/images/profie-icon.png",
         Name: "User9 d",
         mailId: "sandeep.d@tezo.com",
         location: "Banglore",
@@ -60,7 +60,7 @@ var employeeMockData = [
         number: 9876543210
     },
     {
-        employeeImg: "assets/images/profie-icon.png",
+        employeeImg: "../assets/images/profie-icon.png",
         Name: "Sandeep Bhaskar",
         mailId: "sandeep@tezo.com",
         location: "Banglore",
@@ -91,12 +91,16 @@ var roleMockDetails = [
         description: "Configure the providers that are available to users when they sign in"
     }
 ];
-let employee;
-let roleDetails;
+var employee;
+var roleDetails;
 
 employee = JSON.parse(localStorage.getItem('employee'))?.length ? JSON.parse(localStorage.getItem('employee')) : localStorage.setItem('employee', JSON.stringify(employeeMockData));
 roleDetails = JSON.parse(localStorage.getItem('roleDetails'))?.length ? JSON.parse(localStorage.getItem('roleDetails')) : localStorage.setItem('roleDetails', JSON.stringify(roleMockDetails));
 
+function fetchData(){
+    roleDetails = JSON.parse(localStorage.getItem('roleDetails'));
+    employee = JSON.parse(localStorage.getItem('employee'));
+}
 
 
 window.document.addEventListener("DOMContentLoaded", function () {
@@ -126,23 +130,22 @@ const minSideBar = document.querySelector(".minimized-side-nav");
 
 var screenSize = window.matchMedia("(min-width: 720px)");
 let toggleSideBar = () => {
-    const mainContentWidth = sideBar.offsetWidth + 15;
     if (screenSize.matches) {
         if (sideBarOpen) {
-            closeSideBar(mainContentWidth);
+            closeSideBar();
         }
         else {
-            openSideBar(mainContentWidth);
+            openSideBar();
 
         }
         sideBarOpen = !sideBarOpen;
     }
     else {
         if (mobileViewSideBarOpen) {
-            mobileViewcloseSideBar();
+            closemobileViewSideBar();
         }
         else {
-            mobileViewopenSideBar();
+            openmobileViewSideBar();
 
         }
         mobileViewSideBarOpen = !mobileViewSideBarOpen;
@@ -150,7 +153,7 @@ let toggleSideBar = () => {
 
 }
 
-function mobileViewopenSideBar() {
+function openmobileViewSideBar() {
     sideBar.style.display = "flex";
     sideBar.style.position = "absolute";
     sideBar.style.width = "50%";
@@ -161,41 +164,36 @@ function mobileViewopenSideBar() {
     handleIcon.style.marginTop = "0rem";
 }
 
-function mobileViewcloseSideBar() {
+function closemobileViewSideBar() {
     sideBar.style.display = "none";
+    sideBar.style.width = "20%";
+    sideBar.style.zIndex = 11;
     handleIcon.style.marginLeft = "-2rem";
     handleIcon.style.zIndex = 12;
-    sideBar.style.width = "20%";
     handleIcon.style.transform = "rotate(180deg)";
     handleIcon.style.marginTop = "2rem";
-
-
 }
 
-function openSideBar(x) {
+function openSideBar() {
     notification.style.display = "block";
     sideBar.style.display = "flex";
     minSideBar.style.display = "none";
     handleIcon.classList.remove('rotate');
-    const sidebarWidth = sideBar.offsetWidth;
-
     mainContent.style.width = "78%";
     handleIcon.style.transform = "rotate(360deg)";
     handleIcon.style.marginTop = "0rem";
-
 }
 
-function closeSideBar(x) {
-
+function closeSideBar() {
     sideBar.style.display = "none";
     minSideBar.style.display = "block";
     notification.style.display = "none";
-    mainContent.style.width = "90%";
+    mainContent.style.width = "99%";
     handleIcon.style.transform = "rotate(180deg)";
     handleIcon.style.marginTop = "2rem";
     handleIcon.style.marginLeft = "-2rem";
-
 }
+
 function closeNotification() {
     const update = document.querySelector('.pop-up-box');
     update.style.display = "none";

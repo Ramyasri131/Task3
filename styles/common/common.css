@@ -10,17 +10,40 @@
 }
 
 :root {
-    --background: #FDF2F2;
-    --btn-color: #d54141;
+    --red-200: #FDF2F2;
+    --red-100: #d54141;
+    --red-400:#f3bfbf;
     --red: red;
-    --white: white;
+    --red-500:#F89191;
+    --white: #ffffff;
+    --white-100:#FCFCFC;
+    --white-200:#C5CBD1;
     --black: black;
-    --border: #fab0b0;
+    --red-50: #fab0b0;
     --gray: #acadad;
-    --click: #F44848;
+    --red-300: #F44848;
     --gray-50: #FAFAFC;
     --gray-100: #4d4e4e;
-    --outline: #4C9AFF;
+    --gray-300:#5f6164;
+    --gray-200: #C5CBD1;
+    --blue-500: #4C9AFF;
+    --green:green;
+    --green-500:#E7F4E8;
+    --green-300: #38e683;
+    --brown:#ecc2c25c;
+}
+
+/* pointer cursor */
+.add-cursor-pointer{
+    cursor: pointer;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.font-weight-500{
+  font-weight:500;
 }
 
 #side-nav {
@@ -29,7 +52,6 @@
     background-color: var(--white);
     flex-direction: column;
     justify-content: space-between;
-    display: flex;
     position: relative;
 }
 
@@ -37,35 +59,22 @@
 .minimized-side-nav {
     max-width: 15%;
     background-color: var(--white);
-    /* row-gap: 74px; */
     display: none;
-
-
 }
 
 .minimized-icons,
 .vertical-icons {
-    display: flex;
     flex-direction: column;
 }
 
 .minimized-logo {
     justify-content: center;
-    display: flex;
 }
 
 .minimized-logo img {
     max-width: 1.5rem;
     margin-top: 1.5rem;
     height: 1.5rem;
-}
-
-#minimizedHandleLogo {
-    position: absolute;
-    outline: none;
-    background: none;
-    border: none;
-    cursor: pointer;
 }
 
 .vertical-icons img {
@@ -79,20 +88,19 @@
 }
 
 .logo {
-    display: flex;
     max-width: 20%;
     gap: 8rem;
     padding-top: 1rem;
     padding-left: 1rem;
 }
 
-.all {
+.side-bar-heading {
     margin-top: 3rem;
     padding-left: 1rem;
     color: var(--gray);
 }
 
-#tezoLogo {
+#tezo-logo {
     max-width: 6rem;
     height: 1.7rem;
     margin-top: 0.5rem;
@@ -106,12 +114,6 @@
     outline: none;
     background: none;
     border: none;
-    cursor: pointer;
-}
-
-.rotate {
-    transform: rotate(180deg);
-    margin-top: 1.5rem;
 }
 
 #handle-logo img {
@@ -121,7 +123,6 @@
 }
 
 .dashboard {
-    display: flex;
     gap: 0.5rem;
     align-items: center;
     margin: auto;
@@ -143,8 +144,6 @@
 }
 
 .roles {
-    display: flex;
-    /* gap: 0.5rem; */
     height: 2rem;
     padding-top: 1rem;
     padding-left: 1rem;
@@ -153,7 +152,6 @@
 }
 
 .role-navigation {
-    display: flex;
     gap: 0.5rem;
 }
 
@@ -162,8 +160,8 @@
     height: 1rem;
 }
 
-.color {
-    background-color: red;
+.employee-icon-after {
+    background-color:var(--red);
     margin-left: -2rem;
     height: 3rem;
     margin-top: -0.5em;
@@ -171,31 +169,23 @@
     border-bottom-left-radius: 2rem;
 }
 
-.color span {
-    color: red;
+.employee-icon-after span {
+    color:var(--red);
 }
 
 #right-arrow {
-    /* padding-left: 6rem; */
     height: 1rem;
 }
 
-#right-arrow2 {
-    /* padding-left: 3.5rem; */
-    height: 1rem;
-}
 
 .pop-up {
-    background-color: var(--background);
+    background-color: var(--red-200);
     border-radius: 15px;
-    border: 10px solid white;
-    /* height: 8rem; */
+    border: 10px solid var(--white);
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    /* margin-right: 0.5rem;
-    margin-left: 0.5rem; */
 }
 
 .pop-up span {
@@ -207,21 +197,17 @@
     font-weight: 600;
 }
 
-#dismiss {
+#dismiss-btn {
     color: var(--red);
-    cursor: pointer;
 }
 
-#accept {
+#accept-btn {
     color: var(--white);
-    background: var(--click);
-    cursor: pointer;
+    background: var(--red-300);
 }
 
 .access-rights {
-    display: flex;
     margin-top: 1rem;
-    /* gap: 0.5rem; */
     justify-content: space-between;
     padding-left: 1rem;
 }
@@ -232,7 +218,6 @@
 
 .btn-container {
     margin-top: 1rem;
-    display: flex;
     flex-wrap: wrap;
     gap: 0.7rem;
 }
@@ -242,19 +227,16 @@
     padding: 0.5rem;
     border-radius: 6px;
     max-width: 5rem;
-    background: #f3bfbf;
+    background: var(--red-400);
 }
 
 /* styling for header */
 .header {
     margin-top: 0.5rem;
-    display: flex;
 }
 
 .header-icon {
-    display: flex;
     padding-left: 1rem;
-
 }
 
 .search-bar {
@@ -264,7 +246,6 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 7px;
     background-color: var(--white);
-    display: flex;
     height: 1.7rem;
     justify-content: space-around;
 }
@@ -279,7 +260,7 @@
 }
 
 .search-bar input[type="text"]::placeholder {
-    color: #C5CBD1;
+    color:var(--white-200) ;
 }
 
 #search {
@@ -290,7 +271,6 @@
 
 
 .profile {
-    display: flex;
     position: relative;
 }
 
@@ -307,15 +287,14 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
-    background-color: #38e683;
-    border: 2px solid white;
+    background-color:var(--green-300);
+    border: 2px solid var(--white);
     position: absolute;
     left: 1rem;
     top: 1rem;
 }
 
-.profile-name {
-    display: flex;
+.profile-name {   
     padding-left: 0.5rem;
 }
 
@@ -327,7 +306,17 @@
     width: 1rem;
     height: 1rem;
     padding-top: 0.5rem;
-    cursor: pointer;
+}
+.mobile-side-bar-open{
+    position:absolute;
+    width:50%;
+    z-index:11;
+}
+
+.mobile-side-bar-close{
+    position:absolute;
+    width:20%;
+    z-index:11;
 }
 
 @media screen and (max-width:720px) {
@@ -339,7 +328,6 @@
         display: none;
         height: 100vh;
     }
-
 
 }
 

@@ -2,20 +2,18 @@ body {
     margin-top: 0;
     font-family: publicsans;
     font-size: 12px;
-    display: flex;
-    background-color: #FCFCFC;
+    background-color: var(--white-100);
     gap: 1rem;
 }
 
 /* side bar css */
 /* minimized role section */
 .roles {
-    background-color: var(--background);
+    background-color: var(--red-200);
 
 }
 
 .minimized-roles {
-    display: flex;
     gap: 1rem;
     height: 2rem;
     padding-top: 1rem;
@@ -30,16 +28,12 @@ body {
     margin-left: 0.2rem;
 }
 
-.install {
-    margin-top: 2rem;
-}
 
 /* main content */
 
 /* add-employee */
 
 .roles-employees {
-    display: flex;
     gap: 1rem;
     color: var(--gray-100);
     font-weight: 600;
@@ -47,7 +41,6 @@ body {
 
 #role {
     font-size: 15px;
-
 }
 
 #role a {
@@ -60,14 +53,14 @@ body {
     width: 0.6rem;
 }
 
-.color {
+.employee-icon-after {
     right: 0;
     position: absolute;
     margin-top: -1rem;
 }
 
-.add-employee-box {
-    background: var(--click);
+.add-employee-btn {
+    background: var(--red-300);
     height: 2rem;
     width: 10rem;
     padding-top: 0.5rem;
@@ -76,8 +69,6 @@ body {
     border-radius: 8px;
     margin-top: 0.5rem;
     color: var(--white);
-    cursor: pointer;
-    display: flex;
     gap: 0.3rem;
     border: none;
     outline: none;
@@ -92,18 +83,18 @@ body {
 #export-icon {
     width: 1rem;
     height: 1rem;
-
-
 }
 
 .main-section {
-    display: flex;
+    width:100%;
     gap: 1rem;
 }
 
+.main-content{
+    width:78%;
+}
 .add-employee {
     margin-top: 1rem;
-    display: flex;
     justify-content: space-between;
 }
 
@@ -131,13 +122,11 @@ body {
 
 .details-section {
     margin-top: 1rem;
-    display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
 .details-card {
-    display: flex;
     padding: 1rem;
     background: var(--white);
     gap: 1rem;
@@ -145,11 +134,6 @@ body {
     max-height: 20rem;
     border-radius: 10px;
     border: 1px solid var(--gray);
-    /* flex-wrap: wrap; */
-}
-
-.employee-card-details {
-    display: flex;
 }
 
 .employee-card-details img {
@@ -158,25 +142,22 @@ body {
 }
 
 .employee-name {
-    display: flex;
     flex-direction: column;
     padding-left: 1rem;
 }
 
 .employee-information {
     padding: 0.5rem;
-    display: flex;
     margin-top: 0.1rem;
     flex-wrap: wrap;
 }
 
 .employee-information span {
-    color: #5f6570;
+    color:var(--gray-300);
     padding-left: 0.2rem;
 }
 
 .view {
-    display: flex;
     align-items: flex-end;
     gap: 0.5rem;
     cursor: pointer;
@@ -196,16 +177,8 @@ body {
     font-weight: 600;
 }
 
-.main-content {
-    /* display: flex; */
-    width: 78%;
-    /* position: fixed; */
-}
-
 /* add employee form */
-
 .add-role-form {
-    /* width:100%; */
     display: none;
     height: calc(100vh - 100px);
     overflow: auto;
@@ -217,15 +190,12 @@ body {
 
 .add-role-container {
     margin-left: 0.5rem;
-    /* width: 100%; */
     width: 45%;
-    display: flex;
     flex-direction: column;
-
 }
 
 .details {
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -237,7 +207,6 @@ body {
 }
 
 .employee-details {
-    display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
@@ -260,17 +229,14 @@ body {
     border: 1px solid var(--gray);
     outline: none;
     border-radius: 3px;
-    cursor: pointer;
 }
 
 .employee-details select option[value=""][disabled] {
     display: none;
 }
 
-
 .employee-details textarea {
     width: 28.5rem;
-    /* width: max-content; */
     height: 10rem;
     resize: none;
     outline: none;
@@ -282,12 +248,11 @@ body {
 .employee-details input[type=text]:focus,
 .employee-details select:focus,
 .employee-details textarea:focus {
-    border: 1px solid var(--outline);
+    border: 1px solid var(--blue-500);
 }
 
 .form-buttons {
     margin-top: 1rem;
-    display: flex;
     justify-content: flex-end;
     gap: 1rem;
 }
@@ -301,50 +266,32 @@ body {
 .cancel-button {
     border: none;
     outline: none;
-    background: var(--background);
-    color: red;
-    cursor: pointer;
+    background: var(--red-200);
+    color:var(--red);
 }
 
 .submit-button {
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
-.edit-button {
-    border: none;
-    outline: none;
-    background: var(--click);
-    color: var(--white);
-    cursor: pointer;
-}
-
-.save-button {
-    border: none;
-    outline: none;
-    background: var(--click);
-    color: var(--white);
-    cursor: pointer;
-}
 
 .error {
-    color: red;
+    color: var(--red);
 }
 
 .alert {
-    border: 1px solid red !important;
+    border: 1px solid var(--red) !important;
 }
 
 /* multiselect */
 .searchEmployee {
-    display: flex;
-    /* width:45%; */
-    /* width:100%; */
+    width:45%;
     gap: 3rem;
-    background-color: white;
+    display: flex;
+    background-color: var(--white);
     border: 1px solid var(--gray);
     padding: 0.5rem;
     border-radius: 3px;
@@ -360,8 +307,8 @@ body {
 .asssign-employees-container {
     display: none;
     flex-direction: column;
-    /* width:45%; */
-    background-color: white;
+    width:45%;
+    background-color:var(--white);
     padding: 0.5rem;
     border-radius: 3px;
     gap: 0.5rem;
@@ -385,82 +332,16 @@ body {
     font-size: 13.5px;
 }
 
-
-/* @media  screen and (max-width:1200px) {
-    #side-nav{
-        display:none;
-        position:fixed;
-       z-index:1;
-       height:100%;
-    }
-
-    .install{
-        display: none;
-    }
-    .main-content{
-        margin-left:0.05rem;
-    }
-    .all,#role-heading{
-        display:none;
-    }
-    .roles{
-        background-color:transparent;
-    }
-    .filter-section{
-       row-gap:1rem;
-    }
-    .dropdown{
-        width:40%;
-    }
-    .profile-name{
-        display: none;
-    }
-    .details-card {
-        width:40%;
-    }
-    .color{
-        display:none;
-    }
-}
-@media  screen and (max-width:900px) {
-    .details-card{
-        width:38%;
-    }
-    #hamburger-menu{
-        display:block;
-    }
-}
-@media  screen and (max-width:700px) {
-    .details-card{
-        width:35%;
-    }
-}
-@media  screen and (max-width:550px) {
-    .details-card{
-        width:30%;
-    }
-}
-@media  screen and (max-width:450px) {
-    
-    .card-content{
-        width:80%;
-    }
-    .details-card{
-        width:100%;
-    }
-} */
 @media screen and (max-width:700px) {
     .details-card {
         width: 90%;
     }
 
-    ;
 }
 
 @media screen and (max-width:400px) {
-    .add-employee-box {
+    .add-employee-btn {
         width: 14rem;
     }
 
-    ;
 }

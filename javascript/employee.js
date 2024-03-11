@@ -1,13 +1,13 @@
 
-employee = JSON.parse(localStorage.getItem('employee'));
+fetchData();
 createTable(employee);
-roleDetails = JSON.parse(localStorage.getItem('roleDetails'));
 
 roleDetails.forEach(r => {
     let newOption = new Option(r.roleName, r.roleName);
     document.getElementById("roleDropDown").add(newOption, undefined);
 })
-attachStatusOptionListners();
+attachListnerToStatusOption();
+
 
 // creating table
 function createTable(data) {
@@ -19,38 +19,38 @@ function createTable(data) {
         tableRow.classList.add("row");
         tableRow.innerHTML += `<td class="details"><input type="checkbox" class="check-box"onclick="enableCheckBox()"></td>
      <td class="details">
-     <div class="user-data">
+     <div class="user-data d-flex">
      <img src=${data[i].employeeImg} alt="profile-icon" />
-     <div class="user-name">
-         <span  class="ellipsis">${data[i].Name}</span>
-         <span class="email" class="ellipsis">${data[i].mailId}</span>
+     <div class="user-name d-flex">
+         <span  class="emp-details font-weight-500">${data[i].Name}</span>
+         <span class="email" class="emp-details font-weight-500">${data[i].mailId}</span>
      </div>
     </div></td>
-    <td class="details"><span class="ellipsis">${data[i].location}</span>
+    <td class="details"><span class="emp-details font-weight-500">${data[i].location}</span>
         </td>
      <td class="details">
-         <span class="ellipsis">${data[i].department}</span>
+         <span class="emp-details font-weight-500">${data[i].department}</span>
      </td>
      <td class="details">
-         <span  class="ellipsis">${data[i].role}</span>
+         <span  class="emp-details font-weight-500">${data[i].role}</span>
      </td>
      <td class="details">
-         <span class="name">${data[i].empNo}</span>
+         <span class="emp-details font-weight-500">${data[i].empNo}</span>
      </td class="details">
      <td class="details">
          <div  class="active" id="changeBackGround">
-             <span class="name">${data[i].status}</span>
+             <span class="emp-details font-weight-500">${data[i].status}</span>
          </div>
      </td>
      <td class="details">
-        <span class="name">${data[i].dateofJoin}</span>
+        <span class="emp-details font-weight-500">${data[i].dateofJoin}</span>
     </td>
     <td class="details">
         <div class="hidden-options" onclick="displayhiddenOptions(this)">
-            <img src="assets/images/dots.png" alt="more-icon" class="more">
+            <img src="../assets/images/dots.png" alt="more-icon" class="more-options">
             <div class="options">
                <div class="edit-employee">View</div>
-               <div onclick="deleteRow(this)" class="deleteSelectedRow">Delete</div>
+               <div onclick="deleteRow(this)" class="delete-selected-row">Delete</div>
                <div class="status-option">Mark as ${data[i].status === 'In-Active' ? 'Active' : 'In-Active'}</div>
             </div>
         </div>
@@ -63,12 +63,12 @@ function createTable(data) {
         }
 
     }
-    addEditListner();
-    document.getElementById("delete").disabled = true;
+    addListnerToEditIcon();
+    document.getElementById("delete-btn").disabled = true;
 }
 
 //change the status of the employee
-function attachStatusOptionListners() {
+function attachListnerToStatusOption() {
     let array = Array.from(document.getElementsByClassName("status-option"));
     array.forEach(icon => {
         icon.addEventListener("click", function () {
@@ -115,9 +115,9 @@ function changeStatus(cell, division, status, className, icon, employeeId) {
 //to enable and edit the details of an emoloyee
 function editEmployeeDetails(event) {
     event.preventDefault();
-    document.querySelector(".upload-btn").disabled = false;
-    let list = ["firstName", "lastName", "dateOfBirth", "mailId", "mobileNumber", "dropDownLocation", "roleDropDown", "DepartmentDropDown", "joinDate", "assignManager", "assignProject"];
-    list.forEach(ele => {
+    document.querySelector(".upload-image-btn").disabled = false;
+    let formInputs = ["firstName", "lastName", "dateOfBirth", "mailId", "mobileNumber", "dropDownLocation", "roleDropDown", "DepartmentDropDown", "joinDate", "assignManager", "assignProject"];
+    formInputs.forEach(ele => {
         document.getElementById(ele).disabled = false;
     })
     document.querySelector(".edit-button").style.display = "none";
@@ -190,7 +190,7 @@ function saveEmployeeDetails(event) {
 }
 
 // edit employee details
-function addEditListner() {
+function addListnerToEditIcon() {
     document.querySelectorAll(".edit-employee").forEach(emp => {
         emp.addEventListener("click", function () {
             document.querySelector(".employeetable-container").style.display = "none";
@@ -206,7 +206,7 @@ function addEditListner() {
                     employeeId = cell.innerText.trim();
                 }
             });
-            document.querySelector(".upload-btn").disabled = true;
+            document.querySelector(".upload-image-btn").disabled = true;
             let formInputs = ["mailId", "assignProject", "assignManager", "mobileNumber", "DepartmentDropDown", "dropDownLocation", "roleDropDown"];
             let employeeDataLabels = ["r.mailId", "r.project", "r.manager", "r.number", "r.department", "r.location", "r.role"];
             employee.forEach(r => {
@@ -235,7 +235,7 @@ function addEditListner() {
                     document.getElementById("display-image").src = r.employeeImg;
                     disableInputFields(firstName, fname);
                     disableInputFields(id, r.empNo);
-                    document.querySelector(".upload-btn").addEventListener("change", function (event) {
+                    document.querySelector(".upload-image-btn").addEventListener("change", function (event) {
                         let imgdisplay = document.getElementById("display-image");
                         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
                         let reader = new FileReader();
@@ -259,9 +259,8 @@ function disableInputFields(ele, val) {
 }
 
 //function to handle the display of options    
-let hidden = true;
+var hidden = true;
 function displayhiddenOptions(x) {
-
     if (hidden) {
         openhiddenOptions(x);
     }
@@ -285,7 +284,7 @@ function closehiddenOptions(x) {
 document.addEventListener("click", (event) => {
     let target = event.target;
     let optionsContainer = Array.from(document.getElementsByClassName("hidden-options"));
-    if (target.className != "more" && target.className != "options") {
+    if (target.className != "more-options" && target.className != "options") {
         optionsContainer.forEach(r => {
             if (r.querySelector(".options").style.visibility == "visible") {
                 displayhiddenOptions(r);
@@ -318,24 +317,24 @@ function deleteRow(x) {
 
 
 //open form
-let imageData;
+var imageData;
 function openEmployeeForm() {
     document.querySelector(".employeetable-container").style.display = "none";
     document.querySelector(".form-container").style.display = "block";
-    document.querySelector(".upload-btn").disabled = false;
-    let list = ["firstName", "lastName", "dateOfBirth", "mailId", "mobileNumber", "dropDownLocation", "DepartmentDropDown", "roleDropDown", "joinDate", "empNo", "assignManager", "assignProject"];
-    list.forEach(r => {
+    document.querySelector(".upload-image-btn").disabled = false;
+    let formInputs = ["firstName", "lastName", "dateOfBirth", "mailId", "mobileNumber", "dropDownLocation", "DepartmentDropDown", "roleDropDown", "joinDate", "empNo", "assignManager", "assignProject"];
+    formInputs.forEach(r => {
         document.getElementById(r).disabled = false;
         document.getElementById(r).value = "";
     })
-    document.querySelector(".upload-btn").addEventListener("change", function (event) {
+    document.querySelector(".upload-image-btn").addEventListener("change", function (event) {
         let imgdisplay = document.getElementById("display-image");
         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
-        let reader = new FileReader();
-        reader.onload = function () {
+        let fileReader = new FileReader();
+        fileReader.onload = function () {
             imageData = reader.result;
         }
-        reader.readAsDataURL(event.target.files[0]);
+        fileReader.readAsDataURL(event.target.files[0]);
     })
 }
 
@@ -359,7 +358,7 @@ function hideAdvanceFilter() {
 }
 
 // display searched values on clicking enter
-function pressEnter(event) {
+function displaySearchedName(event) {
     var input = document.getElementById("searchBar").value.toUpperCase();
     if (event.keyCode == 13 && input.length >= 3) {
         searchTable(input);
@@ -368,7 +367,7 @@ function pressEnter(event) {
         let tbody = document.getElementById("tableBody");
         tbody.innerHTML = ' ';
         createTable(employee);
-        attachStatusOptionListners();
+        attachListnerToStatusOption();
     }
 }
 
@@ -419,14 +418,14 @@ function searchTable(input) {
     let tbody = document.getElementById("tableBody");
     tbody.innerHTML = ' ';
     createTable(arr);
-    attachStatusOptionListners();
+    attachListnerToStatusOption();
 }
 
 //  alphabet filter 
 applyalphabetFilter();
-let btn = "";
+var btn = "";
 function applyalphabetFilter() {
-    document.querySelectorAll(".btn-icon").forEach(button => {
+    document.querySelectorAll(".alphabets").forEach(button => {
         button.addEventListener("click", function () {
             var currentButton = this;
             btn = currentButton.innerText;
@@ -437,11 +436,11 @@ function applyalphabetFilter() {
                     let filteredData = document.getElementById("tableBody");
                     filteredData.innerHTML = '';
                     createTable(employee);
-                    attachStatusOptionListners();
+                    attachListnerToStatusOption();
                     btn = "";
                 }
                 else {
-                    document.querySelectorAll(".btn-icon").forEach(bt => {
+                    document.querySelectorAll(".alphabets").forEach(bt => {
                         bt.style.background = "rgb(240, 240, 240)";
                         bt.style.color = "var(--gray)";
                     });
@@ -456,7 +455,7 @@ function applyalphabetFilter() {
                     let filteredData = document.getElementById("tableBody");
                     filteredData.innerHTML = '';
                     createTable(res);
-                    attachStatusOptionListners();
+                    attachListnerToStatusOption();
                 }
             }
             else {
@@ -467,14 +466,14 @@ function applyalphabetFilter() {
                     filteredData.innerHTML = '';
                     let arr = dropDown(employee, selectedData[0], selectedData[1], selectedData[2]);
                     createTable(arr);
-                    attachStatusOptionListners();
+                    attachListnerToStatusOption();
                     btn = "";
                 }
                 else {
                     let arr = dropDown(employee, selectedData[0], selectedData[1], selectedData[2]);
                     let tbody = document.getElementById("tableBody");
                     tbody.innerHTML = ' ';
-                    document.querySelectorAll(".btn-icon").forEach(bt => {
+                    document.querySelectorAll(".alphabets").forEach(bt => {
                         bt.style.background = "rgb(240, 240, 240)";
                         bt.style.color = "var(--gray)";
                     });
@@ -489,7 +488,7 @@ function applyalphabetFilter() {
                     let filteredData = document.getElementById("tableBody");
                     filteredData.innerHTML = '';
                     createTable(res);
-                    attachStatusOptionListners();
+                    attachListnerToStatusOption();
                 }
             }
 
@@ -498,13 +497,13 @@ function applyalphabetFilter() {
 }
 
 //to fetch the select data on clicking the apply
-let selectedData = ["null", "null", "null"];
+var selectedData = ["null", "null", "null"];
 function collectSelectedDropDownValue() {
     let status = document.getElementById("statusDropDown").value;
     let location = document.getElementById("locationDropDown").value;
     let dept = document.getElementById("deptDropDown").value;
-    let list = [status, location, dept];
-    selectedData = list;
+    let selectedDropDownData = [status, location, dept];
+    selectedData = selectedDropDownData;
 
 }
 
@@ -528,7 +527,7 @@ function applyDropDownFilter() {
     let tbody = document.getElementById("tableBody");
     tbody.innerHTML = ' ';
     createTable(arr);
-    attachStatusOptionListners();
+    attachListnerToStatusOption();
 }
 
 function dropDown(input, status, location, dept) {
@@ -569,17 +568,17 @@ function dropDown(input, status, location, dept) {
 
 //check box
 function enableCheckBox() {
-    let check = document.querySelectorAll(".check-box");
-    let del = document.getElementById("delete");
-    check.forEach(a => {
+    let checkBox = document.querySelectorAll(".check-box");
+    let delBtn = document.getElementById("delete-btn");
+    checkBox.forEach(a => {
         if (a.checked) {
-            del.style.background = "var(--click)";
-            document.getElementById("delete").disabled = false;
+            delBtn.style.background = "var(--red-300)";
+            document.getElementById("delete-btn").disabled = false;
         }
         else {
             let checkCount = document.querySelectorAll("input[type='checkbox']:checked").length > 0;
             if (!checkCount) {
-                del.style.background = "#F89191";
+                delBtn.style.background = "#F89191";
             }
         }
     })
@@ -587,8 +586,8 @@ function enableCheckBox() {
 
 //delete
 function deleteSelectedEmployeeRows() {
-    let check = document.querySelectorAll(".check-box");
-    check.forEach(a => {
+    let checkBox = document.querySelectorAll(".check-box");
+    checkBox.forEach(a => {
         if (a.checked) {
             let row = a.parentElement.parentElement;
             let empNo;
@@ -607,10 +606,9 @@ function deleteSelectedEmployeeRows() {
                 count++;
             })
             localStorage.setItem('employee', JSON.stringify(employee));
-
             applyDropDownFilter();
-            let del = document.getElementById("delete");
-            del.style.background = "#F89191";
+            let delBtn = document.getElementById("delete-btn");
+            delBtn.style.background = "#F89191";
             document.getElementById("headerCheckBox").checked = false;
         }
     });
@@ -619,7 +617,7 @@ function deleteSelectedEmployeeRows() {
 // check all
 function checkAllCheckBoxes() {
     let mainCheck = document.getElementById("headerCheckBox");
-    let del = document.getElementById("delete");
+    let del = document.getElementById("delete-btn");
     let check = document.querySelectorAll(".check-box");
     check.forEach(a => {
         a.checked = mainCheck.checked;
@@ -630,14 +628,14 @@ function checkAllCheckBoxes() {
         del.style.background = "#F89191";
     }
     else {
-        del.style.background = "var(--click)";
-        document.getElementById("delete").disabled = false;
+        del.style.background = "var(--red-300)";
+        document.getElementById("delete-btn").disabled = false;
     }
 }
 
 
 // sort the table
-let sortingOrders = {};
+var sortingOrders = {};
 function sortEmployeeTable(n) {
     let tbody = document.getElementById("tableBody");
     let trow = Array.from(document.querySelectorAll(".row"));
@@ -734,7 +732,7 @@ function SubmitEmployeeDetails(event) {
     }
     else {
         let formData = {
-            employeeImg: imageData ? imageData : "assets/images/upload-image.png",
+            employeeImg: imageData ? imageData : "../assets/images/upload-image.png",
             Name: document.getElementById(formInputs[1]).value + " " + document.getElementById(formInputs[2]).value,
             mailId: document.getElementById(formInputs[4]).value,
             location: document.getElementById(formInputs[7]).value,
@@ -758,12 +756,12 @@ function SubmitEmployeeDetails(event) {
             document.getElementById(ele).value = "";
             document.getElementById(ele).classList.remove('error');
         })
-        let list2 = ['validEmpNo', "validFirstName", "validLastName", "date-of-birth", "valid", "phone-number", "date-of-join", "city", "role-error", "dept", "manager", "project"];
-        list2.forEach(ele => {
+        let validMsg = ['validEmpNo', "validFirstName", "validLastName", "date-of-birth", "valid", "phone-number", "date-of-join", "city", "role-error", "dept", "manager", "project"];
+        validMsg.forEach(ele => {
             document.getElementById(ele).innerText = "";
         })
         let imgdisplay = document.getElementById("display-image");
-        imgdisplay.src = "assets/images/upload-image.png";
+        imgdisplay.src = "../assets/images/upload-image.png";
         document.querySelector(".employeetable-container").style.display = "block";
         document.querySelector(".form-container").style.display = "none";
         event.preventDefault();
@@ -782,16 +780,16 @@ function clearInputFeilds(event) {
     document.querySelector(".edit-button").style.display = "none";
     document.querySelector(".save-button").style.display = "none";
     document.querySelector(".submit-button").style.display = "block";
-    let list = ["firstName", "lastName", "dateOfBirth", "mailId", "mobileNumber", "dropDownLocation", "DepartmentDropDown", "roleDropDown", "joinDate", "empNo", "assignManager", "assignProject"];
-    list.forEach(r => {
+    let formInputs = ["firstName", "lastName", "dateOfBirth", "mailId", "mobileNumber", "dropDownLocation", "DepartmentDropDown", "roleDropDown", "joinDate", "empNo", "assignManager", "assignProject"];
+    formInputs.forEach(r => {
         document.getElementById(r).disabled = false;
         document.getElementById(r).value = "";
         document.getElementById(r).classList.remove("error");
     })
     document.querySelector(".employeetable-container").style.display = "block";
     document.querySelector(".form-container").style.display = "none";
-    let list2 = ['validEmpNo', "validFirstName", "validLastName", "date-of-birth", "valid", "phone-number", "date-of-join", "city", "role-error", "dept", "manager", "project"];
-    list2.forEach(ele => {
+    let validMsg = ['validEmpNo', "validFirstName", "validLastName", "date-of-birth", "valid", "phone-number", "date-of-join", "city", "role-error", "dept", "manager", "project"];
+    validMsg.forEach(ele => {
         document.getElementById(ele).innerText = "";
     })
 }
@@ -800,7 +798,7 @@ function clearInputFeilds(event) {
 function resetFilters() {
     let tbody = document.getElementById("tableBody");
     tbody.innerHTML = ' ';
-    document.querySelectorAll(".btn-icon").forEach(btn => {
+    document.querySelectorAll(".alphabets").forEach(btn => {
         btn.style.background = "rgb(240, 240, 240)";
         btn.style.color = "var(--gray)";
     });
@@ -810,7 +808,7 @@ function resetFilters() {
     btn = "";
     collectSelectedDropDownValue();
     createTable(employee);
-    attachStatusOptionListners();
+    attachListnerToStatusOption();
 }
 
 //export file to excel

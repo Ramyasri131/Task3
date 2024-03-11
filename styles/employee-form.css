@@ -2,7 +2,7 @@ body {
     margin-top: 0;
     font-family: publicsans;
     font-size: 12px;
-    background-color: #FCFCFC;
+    background-color:var(--white-100);
     gap: 1rem;
 
 }
@@ -12,7 +12,6 @@ body {
     height: calc(100vh - 80px);
     overflow: auto;
     display: none;
-
 }
 
 .form-container::-webkit-scrollbar {
@@ -26,14 +25,12 @@ body {
 }
 
 .row-display {
-    display: flex;
     flex-wrap: wrap;
 }
 
 /* form */
 /* image upload */
-.add-employee-form {
-    display: flex;
+.employee-form {
     flex-wrap: wrap;
 }
 
@@ -44,19 +41,15 @@ body {
 }
 
 .upload-image {
-    display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
     align-items: center;
 }
 
-.upload-btn {
+.upload-image-btn{
     width: 4rem;
     opacity: 0;
-    /* z-index:-1; */
-    cursor: pointer;
     position: absolute;
-
 }
 
 .file-upload {
@@ -64,7 +57,6 @@ body {
     background: none;
     border: none;
     outline: none;
-    cursor: pointer;
     align-items: center;
 }
 
@@ -74,7 +66,6 @@ body {
 
 .personal-info span {
     font-size: 18px;
-    font-weight: 500;
 }
 
 .employee-info {
@@ -84,12 +75,10 @@ body {
 
 .employee-info span {
     font-size: 18px;
-    font-weight: 500;
 }
 
 .employee-info .form-heading input[type=date] {
     width: 19rem;
-    cursor: pointer;
 }
 
 .form-heading select {
@@ -97,12 +86,8 @@ body {
     margin-top: 0.5rem;
     height: 2rem;
     outline: none;
-    cursor: pointer;
 }
 
-#dateOfBirth {
-    cursor: pointer;
-}
 
 .form-heading label,
 input {
@@ -126,53 +111,48 @@ input {
 }
 
 .form-heading input[type=text]:focus {
-    border: 1px solid var(--outline) !important;
+    border: 1px solid var(--blue-500) !important;
 }
 
 .form-heading input[type=tel]:focus {
-    border: 1px solid var(--outline) !important;
+    border: 1px solid var(--blue-500) !important;
 }
 
 .form-heading input[type=date]:focus {
-    border: 1px solid var(--outline) !important;
+    border: 1px solid var(--blue-500) !important;
 }
 
 .form-heading select:focus {
-    border: 1px solid var(--outline) !important;
+    border: 1px solid var(--blue-500) !important;
 }
 
 .form-heading select {
     padding: 0.5rem;
 }
 
-.name {
+.employee-input {
     gap: 1rem;
 }
 
-.name input[type="text"],
-.name input[type="date"],
-.name input[type="email"],
-.name input[type="tel"] {
+.employee-input input[type="text"],
+.employee-input input[type="date"],
+.employee-input input[type="email"],
+.employee-input input[type="tel"] {
     width: 12rem;
-
 }
 
 .form-buttons {
     margin-top: 1rem;
-    display: flex;
     justify-content: flex-end;
-    /* padding-right:12rem; */
     gap: 1rem;
     flex-wrap: wrap;
-
 }
 
 .error {
-    border: 1px solid red !important;
+    border: 1px solid var(--red) !important;
 }
 
 .form-buttons button {
-    /* padding:0.5rem; */
     height: 2rem;
     width: 8rem;
     border-radius: 5px;
@@ -185,35 +165,31 @@ input {
 .cancel-button {
     border: none;
     outline: none;
-    background: var(--background);
+    background: var(--red-200);
     color: red;
-    cursor: pointer;
 }
 
 .submit-button {
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 .edit-button {
     display: none;
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 .save-button {
     display: none;
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 input::-webkit-outer-spin-button,
@@ -225,7 +201,6 @@ input::-webkit-inner-spin-button {
 @media screen and (max-width:439px) {
     #joinDate {
         width: 9rem;
-
     }
 
     .form-heading select {

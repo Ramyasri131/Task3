@@ -11,25 +11,25 @@ function createDescripton() {
     document.getElementById("add-role-description").innerText = role.description;
 }
 function createEmployeeDetailsCards() {
-    let cnt = 0;
+    let count = 0;
     employee.forEach(ele => {
         if (ele.role == role.roleName && ele.location == role.cityName) {
             let roleCardContainer = document.getElementById("details-card-container");
 
             let detailsCard = document.createElement("div");
-            detailsCard.classList.add("details-card");
+            detailsCard.classList.add('details-card', 'd-flex');
 
             let cardContent = document.createElement("div");
             cardContent.classList.add("card-content");
 
             let employeeDetails = document.createElement("div");
-            employeeDetails.classList.add("employee-card-details");
+            employeeDetails.classList.add("employee-card-details","d-flex");
             let employeeImg = document.createElement("img");
             employeeImg.src = ele.employeeImg;
             employeeDetails.appendChild(employeeImg);
 
             let employeeName = document.createElement("div");
-            employeeName.classList.add("employee-name");
+            employeeName.classList.add("employee-name","d-flex");
             let nameOfEmployee = document.createElement("span");
             nameOfEmployee.setAttribute('id', 'emp-name');
             nameOfEmployee.innerText = ele.Name;
@@ -40,36 +40,37 @@ function createEmployeeDetailsCards() {
             employeeDetails.appendChild(employeeName);
 
             let IdOfEmployee = document.createElement("div");
-            IdOfEmployee.classList.add("employee-information");
+            IdOfEmployee.classList.add("employee-information","d-flex");
             let idImage = document.createElement("img");
-            idImage.src = "assets/icons/emp-id.svg";
+            idImage.src = "../assets/icons/emp-id.svg";
             let idNo = document.createElement("span");
             idNo.innerText = ele.empNo;
             IdOfEmployee.appendChild(idImage);
             IdOfEmployee.appendChild(idNo);
 
             let emailOfEmployee = document.createElement("div");
-            emailOfEmployee.classList.add("employee-information");
+            emailOfEmployee.classList.add("employee-information","d-flex");
             let emailImage = document.createElement("img");
-            emailImage.src = "assets/icons/email-icon.svg";
+            emailImage.src = "../assets/icons/email-icon.svg";
             let emailId = document.createElement("span");
             emailId.innerText = ele.mailId;
             emailOfEmployee.appendChild(emailImage);
             emailOfEmployee.appendChild(emailId);
 
             let deptOfEmployee = document.createElement("div");
-            deptOfEmployee.classList.add("employee-information");
+            deptOfEmployee.classList.add("employee-information","d-flex");
+
             let deptImage = document.createElement("img");
-            deptImage.src = "assets/icons/team.svg";
+            deptImage.src = "../assets/icons/team.svg";
             let deptId = document.createElement("span");
             deptId.innerText = ele.department;
             deptOfEmployee.appendChild(deptImage);
             deptOfEmployee.appendChild(deptId);
 
             let locationOfEmployee = document.createElement("div");
-            locationOfEmployee.classList.add("employee-information");
+            locationOfEmployee.classList.add("employee-information","d-flex");
             let locationImage = document.createElement("img");
-            locationImage.src = "assets/icons/location.svg";
+            locationImage.src = "../assets/icons/location.svg";
             let locationName = document.createElement("span");
             locationName.innerText = ele.location;
             locationOfEmployee.appendChild(locationImage);
@@ -83,10 +84,12 @@ function createEmployeeDetailsCards() {
 
             let view = document.createElement("div");
             view.classList.add("view");
+            view.classList.add("d-flex");
+
             let heading = document.createElement("span");
             heading.innerText = "View";
             let arrowImg = document.createElement("img");
-            arrowImg.src = "assets/images/view.png";
+            arrowImg.src = "../assets/icons/view.png";
             view.appendChild(heading);
             view.appendChild(arrowImg);
 
@@ -94,11 +97,11 @@ function createEmployeeDetailsCards() {
             detailsCard.appendChild(view);
 
             roleCardContainer.appendChild(detailsCard);
-            cnt += 1;
+            count += 1;
         }
 
     })
-    if (cnt == 0) {
+    if (count == 0) {
         let roleCardContainer = document.getElementById("details-card-container");
         let detailsCard = document.createElement("div");
         detailsCard.classList.add("details-card");
@@ -140,7 +143,7 @@ function editRoleDetails() {
 }
 
 collectUnassignedEmployees();
-let unassignedEmployee = [];
+var unassignedEmployee = [];
 function collectUnassignedEmployees() {
     document.getElementById("assign-employee-section").innerHTML = "";
     let inputLocation = document.getElementById("location-dropdown").value;
@@ -153,7 +156,7 @@ function collectUnassignedEmployees() {
             let assignEmployeeDetails = document.createElement("div");
             assignEmployeeDetails.classList.add("assign-employee-details");
             let assignEmployeeImg = document.createElement("img");
-            assignEmployeeImg.src = "assets/images/profie-icon.png";
+            assignEmployeeImg.src =  r.employeeImg;
             let employeeName = document.createElement("label");
             employeeName.classList.add("check-employee");
             employeeName.innerText = r.Name;
@@ -175,7 +178,7 @@ function collectUnassignedEmployees() {
         }
     })
 }
-let visible = false;
+var visible = false;
 function showUnassignedEmployees() {
     if (visible) {
         closeUnassignedEmployees();
@@ -233,7 +236,7 @@ function addEditListner() {
             document.getElementById("firstName").disabled = true;
             let employeeId = emp.parentElement.querySelector(".card-content").querySelector(".employee-information").innerText;
             console.log(employeeId);
-            document.querySelector(".upload-btn").disabled = true;
+            document.querySelector(".upload-image-btn").disabled = true;
             let formInputs = ["mailId", "assignProject", "assignManager", "mobileNumber", "DepartmentDropDown", "dropDownLocation", "roleDropDown"];
             let employeeDataLabels = ["r.mailId", "r.project", "r.manager", "r.number", "r.department", "r.location", "r.role"];
             employee.forEach(r => {
@@ -243,8 +246,6 @@ function addEditListner() {
                     let dob = document.getElementById("dateOfBirth");
                     let dateofJoin = document.getElementById("joinDate");
                     let id = document.getElementById("empNo");
-                    // let role = document.getElementById("empNo");
-                    console.log(r.role);
                     for (let i = 0; i < formInputs.length; i++) {
                         disableInputFields(document.getElementById(formInputs[i]), eval(employeeDataLabels[i]));
                     }
@@ -264,7 +265,7 @@ function addEditListner() {
                     document.getElementById("display-image").src = r.employeeImg;
                     disableInputFields(firstName, fname);
                     disableInputFields(id, r.empNo);
-                    document.querySelector(".upload-btn").addEventListener("change", function (event) {
+                    document.querySelector(".upload-image-btn").addEventListener("change", function (event) {
                         let imgdisplay = document.getElementById("display-image");
                         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
                         let reader = new FileReader();

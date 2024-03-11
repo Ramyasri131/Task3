@@ -1,7 +1,6 @@
-roleDetails = JSON.parse(localStorage.getItem('roleDetails'));
-
-employee = JSON.parse(localStorage.getItem('employee'));
+fetchData();
 createCards(roleDetails);
+
 
 document.addEventListener("click", (event) => {
     let target = event.target;
@@ -41,7 +40,7 @@ document.getElementById("location-dropdown").addEventListener("change", function
     getLocationBasedEmployees();
 });
 
-let unassignedEmployee = [];
+var unassignedEmployee = [];
 function collectUnassignedEmployees(pageType) {
     document.getElementById("assign-employee-section").innerHTML = "";
     let inputLocation = document.getElementById("location-dropdown").value;
@@ -53,7 +52,7 @@ function collectUnassignedEmployees(pageType) {
             let assignEmployeeDetails = document.createElement("div");
             assignEmployeeDetails.classList.add("assign-employee-details");
             let assignEmployeeImg = document.createElement("img");
-            assignEmployeeImg.src = "assets/images/profie-icon.png";
+            assignEmployeeImg.src = r.employeeImg;
             let employeeName = document.createElement("label");
             employeeName.classList.add("check-employee");
             employeeName.innerText = r.Name;
@@ -68,9 +67,6 @@ function collectUnassignedEmployees(pageType) {
             check.onchange = function () {
                 checkUnassignedEmployees(this, id);
             };
-            // document.querySelector(".assign-employee").addEventListener("change",function (){
-            //     checkUnassignedEmployees(this, id);
-            // });
             a++;
             assignEmployeeDiv.appendChild(assignEmployeeDetails);
             assignEmployeeDiv.appendChild(check);
@@ -86,7 +82,7 @@ function collectUnassignedEmployees(pageType) {
                 let assignEmployeeDetails = document.createElement("div");
                 assignEmployeeDetails.classList.add("assign-employee-details");
                 let assignEmployeeImg = document.createElement("img");
-                assignEmployeeImg.src = "assets/images/profie-icon.png";
+                assignEmployeeImg.src =  r.employeeImg;
                 let employeeName = document.createElement("label");
                 employeeName.innerText = r.Name;
                 employeeName.classList.add("check-employee");
@@ -103,9 +99,6 @@ function collectUnassignedEmployees(pageType) {
                 check.onchange = function () {
                     checkUnassignedEmployees(this, id);
                 };
-                // document.querySelector(".assign-employee").addEventListener("change",function (){
-                //     checkUnassignedEmployees(this, id);
-                // });
                 a++;
                 assignEmployeeDiv.appendChild(assignEmployeeDetails);
                 assignEmployeeDiv.appendChild(check);
@@ -114,17 +107,7 @@ function collectUnassignedEmployees(pageType) {
         })
     }
 }
-
-// document.querySelectorAll(".assign-employee").forEach(ele=>{
-//     ele.addEventListener("change",function (){
-//         checkUnassignedEmployees(this, id);
-//         document.getElementById("myCheck").checked = true;
-
-// })
-
-// });
-
-let visible = false;
+var visible = false;
 function showUnassignedEmployees() {
     if (visible) {
         closeUnassignedEmployees();
@@ -231,15 +214,15 @@ function clearFeilds() {
     let inputDepartment = document.getElementById("department-dropdown");
     let inputLocation = document.getElementById("location-dropdown");
     inputRole.value = "";
-    inputRole.classList.remove("alert");
-    inputDepartment.classList.remove("alert");
-    inputLocation.classList.remove("alert");
-    document.getElementById("valid-city").innerText = "";
-    document.getElementById("valid-city").classList.remove("error");
-    document.getElementById("valid-dept").innerText = "";
-    document.getElementById("valid-dept").classList.remove("error");
-    document.getElementById("valid-role").innerText = "";
-    document.getElementById("valid-role").classList.remove("error");
+    let inputs=[inputRole,inputDepartment,inputLocation];
+    inputs.forEach(ele=>{
+        ele.classList.remove("alert");
+    })
+    let vaildMsg=["valid-city","valid-dept","valid-role"];
+    vaildMsg.forEach(ele=>{
+        document.getElementById(ele).innerText = "";
+        document.getElementById(ele).classList.remove("error");
+    })
     document.getElementById("assign-employee-section").style.display = "none";
     inputDepartment.value = "";
     inputLocation.value = "";
@@ -266,7 +249,7 @@ function createCards(roleDetails) {
         let roleName = document.createElement("span");
         roleName.innerText = r.roleName;
         let editImage = document.createElement("img");
-        editImage.src = "assets/icons/edit.svg";
+        editImage.src = "../assets/icons/edit.svg";
         editImage.classList.add("editDetails");
         roleNameContainer.appendChild(roleName);
         roleNameContainer.appendChild(editImage);
@@ -277,7 +260,7 @@ function createCards(roleDetails) {
         let departmentHeading = document.createElement("div");
         departmentHeading.classList.add("dept");
         let departmentIcon = document.createElement("img");
-        departmentIcon.src = "assets/icons/team.svg";
+        departmentIcon.src = "../assets/icons/team.svg";
         departmentHeading.appendChild(departmentIcon);
         let departmentName = document.createElement("span");
         departmentName.innerText = "Department";
@@ -294,7 +277,7 @@ function createCards(roleDetails) {
         let cityNameContainer = document.createElement("div");
         cityNameContainer.classList.add("dept");
         let cityImage = document.createElement("img");
-        cityImage.src = "assets/icons/location.svg";
+        cityImage.src = "../assets/icons/location.svg";
         cityNameContainer.appendChild(cityImage);
         let cityHeading = document.createElement("span");
         cityHeading.innerText = "Location";
@@ -315,8 +298,8 @@ function createCards(roleDetails) {
         //profile icons
         let profieIconsContainer = document.createElement("div");
         profieIconsContainer.classList.add("icons");
-        let cnt = 0;
         let displayImages = [];
+        let cnt=0;
         employee.forEach(ele => {
             if (ele.role == r.roleName && ele.location == r.location) {
                 displayImages.push(ele.employeeImg);
@@ -327,8 +310,7 @@ function createCards(roleDetails) {
             for (let i = 0; i < cnt; i++) {
                 let image = document.createElement("img");
                 image.src = displayImages[i];
-                let imageId = "profile" + (cnt - i);
-                image.setAttribute('id', imageId);
+                image.setAttribute('class', 'employee-profile');
                 profieIconsContainer.appendChild(image);
             }
         }
@@ -336,8 +318,7 @@ function createCards(roleDetails) {
             for (let i = 0; i < 4; i++) {
                 let image = document.createElement("img");
                 image.src = displayImages[i];
-                let imageId = "profile" + (i + 1);
-                image.setAttribute('id', imageId);
+                image.setAttribute('class', 'employee-profile');
                 profieIconsContainer.appendChild(image);
             }
             let image5 = document.createElement("div");
@@ -345,7 +326,7 @@ function createCards(roleDetails) {
             let text2 = cnt - 4;
             let str = text1.concat(text2);
             image5.innerText = str;
-            image5.setAttribute('id', 'total-cnt');
+            image5.setAttribute('id', 'total-count');
             profieIconsContainer.appendChild(image5);
 
 
@@ -358,10 +339,9 @@ function createCards(roleDetails) {
         let linkHeading = document.createElement("span");
         linkHeading.innerText = "View all Employess";
         let arrowImage = document.createElement("img");
-        arrowImage.src = "assets/images/view.png";
+        arrowImage.src = "../assets/icons/view.png";
         link.appendChild(linkHeading);
         link.appendChild(arrowImage);
-
         division.appendChild(roleNameContainer);
         division.appendChild(departmentDivision);
         division.appendChild(cityDivision);
@@ -375,7 +355,7 @@ function createCards(roleDetails) {
 
 }
 
-let selectedOptions = ["", ""];
+var selectedOptions = ["", ""];
 function getSelectedOptions() {
     let deptValue = document.getElementById("filterDepartment").value;
     let locationValue = document.getElementById("filterLocation").value;
@@ -417,7 +397,7 @@ function addViewEmployeeListner() {
             })
             let viewRole = { roleName: row.innerText, cityName: cityName.innerText, description: desc };
             viewRole = localStorage.setItem('viewRole', JSON.stringify(viewRole));
-            location.href = "/roledetails.html";
+            location.href = "role-details.html";
         })
     })
 }

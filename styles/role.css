@@ -2,22 +2,19 @@ body {
     margin-top: 0;
     font-family: publicsans;
     font-size: 12px;
-    background-color: #FCFCFC;
+    background-color: var(--white-100);
 }
 
 .main-section {
-    display: flex;
     gap: 1rem;
 }
 
 .main-content {
     width: 78%;
-
 }
 
 /* minimized role section */
 .minimized-roles {
-    display: flex;
     gap: 1rem;
     height: 2rem;
     padding-top: 1rem;
@@ -28,7 +25,7 @@ body {
 
 
 .roles {
-    background-color: var(--background);
+    background-color: var(--red-200);
 }
 
 #employee-tag .links {
@@ -39,17 +36,11 @@ body {
     width: 1.2rem;
 }
 
-.install {
-    margin-top: 2rem;
-}
 
 /* role section css */
 .role-desc {
-    display: flex;
     flex-direction: column;
     line-height: 1.5rem;
-
-
 }
 
 #role-heading {
@@ -61,16 +52,14 @@ body {
 }
 
 .add-role {
-    background-color: var(--click);
+    background-color: var(--red-300);
     padding-top: 0.5rem;
     width: 7rem;
     height: 2rem;
-    display: flex;
     justify-content: center;
     border-radius: 5px;
     color: var(--white);
     gap: 0.5rem;
-    cursor: pointer;
     border: none;
     outline: none;
     margin-top: 0.5rem;
@@ -82,7 +71,6 @@ body {
 }
 
 .role-section {
-    display: flex;
     justify-content: space-between;
     margin-top: 1rem;
 }
@@ -90,26 +78,23 @@ body {
 /* filter section  */
 
 .filter-section {
-    display: flex;
     justify-content: space-between;
     margin-top: 1rem;
-    background-color: var(--background);
+    background-color: var(--red-200);
     padding: 0.5rem;
-    border: 1px solid var(--border);
+    border: 1px solid var(--red-50);
     border-radius: 5px;
     flex-wrap: wrap;
 
 }
 
 .filter-section-left {
-    display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 
 }
 
 .filter-btn {
-    display: flex;
     gap: 0.5rem;
     margin-top: 0.5rem;
 }
@@ -120,7 +105,7 @@ body {
 }
 
 .dropdown {
-    border: 1px solid var(--border);
+    border: 1px solid var(--red-50);
     outline: none;
     padding: 0.5rem;
     border-radius: 5px;
@@ -131,19 +116,17 @@ body {
 }
 
 .order-btn {
-    display: flex;
     gap: 1rem;
 }
 
 #reset {
-    border: 1px solid var(--btn-color);
+    border: 1px solid var( --red-100);
     padding: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 5px;
-    color: var(--btn-color);
+    color: var( --red-100);
     background: var(--white);
-    cursor: pointer;
 }
 
 #apply {
@@ -153,9 +136,8 @@ body {
     padding-right: 1rem;
     border-radius: 5px;
     border-radius: 5px;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 #filter {
@@ -163,10 +145,8 @@ body {
 }
 
 /* main content css */
-
 .role-container {
     margin-top: 1rem;
-    display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     width: 100%;
@@ -183,7 +163,7 @@ body {
 
 .role-card a {
     text-decoration: none;
-    color: black;
+    color:var(--black);
 }
 
 .role-name {
@@ -195,7 +175,7 @@ body {
 
 }
 
-.color {
+.c {
     right: 0;
     position: absolute;
     margin-top: -1rem;
@@ -211,7 +191,6 @@ body {
 .dept {
     display: flex;
     justify-content: space-between;
-
 }
 
 .town {
@@ -222,7 +201,7 @@ body {
 }
 
 .dept-name-color {
-    color: #5f6570;
+    color:var(--gray-300);
 }
 
 .view-emp {
@@ -253,13 +232,13 @@ body {
     height: 1rem;
 }
 
-#profile1 {
+.employee-profile:nth-child(1){
     position: absolute;
     z-index: 2;
     left: 82%;
 }
 
-#profile2 {
+.employee-profile:nth-child(2) {
     position: absolute;
     width: 1rem;
     height: 1rem;
@@ -267,7 +246,7 @@ body {
     left: 85%;
 }
 
-#profile3 {
+.employee-profile:nth-child(3){
     position: absolute;
     width: 1rem;
     height: 1rem;
@@ -275,7 +254,7 @@ body {
     left: 88%;
 }
 
-#profile4 {
+.employee-profile:nth-child(4){
     position: absolute;
     width: 1rem;
     height: 1rem;
@@ -283,7 +262,7 @@ body {
     left: 91%;
 }
 
-#total-cnt {
+#total-count {
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
@@ -320,13 +299,11 @@ body {
 .add-role-container {
     margin-left: 0.5rem;
     width: 45%;
-    display: flex;
     flex-direction: column;
 
 }
 
 .details {
-    display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
@@ -338,7 +315,6 @@ body {
 }
 
 .employee-details {
-    display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
@@ -361,7 +337,6 @@ body {
     border: 1px solid var(--gray);
     outline: none;
     border-radius: 3px;
-    cursor: pointer;
 }
 
 .employee-details select option[value=""][disabled] {
@@ -371,7 +346,6 @@ body {
 
 .employee-details textarea {
     width: 28.5rem;
-    /* width: max-content; */
     height: 10rem;
     resize: none;
     outline: none;
@@ -382,12 +356,11 @@ body {
 .employee-details input[type=text]:focus,
 .employee-details select:focus,
 .employee-details textarea:focus {
-    border: 1px solid var(--outline);
+    border: 1px solid ;
 }
 
 .form-buttons {
     margin-top: 1rem;
-    display: flex;
     justify-content: flex-end;
     gap: 1rem;
 }
@@ -401,52 +374,48 @@ body {
 .cancel-button {
     border: none;
     outline: none;
-    background: var(--background);
-    color: red;
-    cursor: pointer;
+    background: var(--red-200);
+    color:var(--red);
 }
 
 .submit-button {
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 .edit-button {
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 .save-button {
     border: none;
     outline: none;
-    background: var(--click);
+    background: var(--red-300);
     color: var(--white);
-    cursor: pointer;
 }
 
 .error {
-    color: red;
+    color:var(--red);
 }
 
 .alert {
-    border: 1px solid red !important;
+    border: 1px solid var(--red) !important;
 }
 
 /* multiselect */
 .searchEmployee {
+    width:45%;
     display: flex;
     gap: 3rem;
-    background-color: white;
+    background-color: var(--white);
     border: 1px solid var(--gray);
     padding: 0.5rem;
     border-radius: 3px;
-    cursor: pointer;
     white-space: nowrap;
 }
 
@@ -458,7 +427,8 @@ body {
 .asssign-employees-container {
     display: none;
     flex-direction: column;
-    background-color: white;
+    width:45%;
+    background-color: var(--white);
     padding: 0.5rem;
     border-radius: 3px;
     gap: 0.5rem;
@@ -480,6 +450,12 @@ body {
     gap: .1rem;
     font-weight: 500;
     font-size: 13.5px;
+}
+
+.employee-icon-after {
+    right: 0;
+    position: absolute;
+    margin-top: -1rem;
 }
 
 @media screen and (max-width:800px) {
