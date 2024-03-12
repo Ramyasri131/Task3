@@ -6,7 +6,7 @@ roleDetails.forEach(r => {
     let newOption = new Option(r.roleName, r.roleName);
     document.getElementById("roleDropDown").add(newOption, undefined);
 })
-attachListnerToStatusOption();
+attachListnerToChangeStatus();
 
 
 // creating table
@@ -63,12 +63,12 @@ function createTable(data) {
         }
 
     }
-    addListnerToEditIcon();
+    addListnerToEditOption;
     document.getElementById("delete-btn").disabled = true;
 }
 
 //change the status of the employee
-function attachListnerToStatusOption() {
+function attachListnerToChangeStatus() {
     let array = Array.from(document.getElementsByClassName("status-option"));
     array.forEach(icon => {
         icon.addEventListener("click", function () {
@@ -190,7 +190,7 @@ function saveEmployeeDetails(event) {
 }
 
 // edit employee details
-function addListnerToEditIcon() {
+function addListnerToEditOption() {
     document.querySelectorAll(".edit-employee").forEach(emp => {
         emp.addEventListener("click", function () {
             document.querySelector(".employeetable-container").style.display = "none";
@@ -238,12 +238,12 @@ function addListnerToEditIcon() {
                     document.querySelector(".upload-image-btn").addEventListener("change", function (event) {
                         let imgdisplay = document.getElementById("display-image");
                         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
-                        let reader = new FileReader();
-                        reader.onload = function () {
+                        let fileReader = new FileReader();
+                        fileReader.onload = function () {
                             imageData = reader.result;
 
                         }
-                        reader.readAsDataURL(event.target.files[0]);
+                        fileReader.readAsDataURL(event.target.files[0]);
                     })
                 }
             })
@@ -367,7 +367,7 @@ function displaySearchedName(event) {
         let tbody = document.getElementById("tableBody");
         tbody.innerHTML = ' ';
         createTable(employee);
-        attachListnerToStatusOption();
+        attachListnerToChangeStatus();
     }
 }
 
@@ -418,7 +418,7 @@ function searchTable(input) {
     let tbody = document.getElementById("tableBody");
     tbody.innerHTML = ' ';
     createTable(arr);
-    attachListnerToStatusOption();
+    attachListnerToChangeStatus();
 }
 
 //  alphabet filter 
@@ -436,7 +436,7 @@ function applyalphabetFilter() {
                     let filteredData = document.getElementById("tableBody");
                     filteredData.innerHTML = '';
                     createTable(employee);
-                    attachListnerToStatusOption();
+                    attachListnerToChangeStatus();
                     btn = "";
                 }
                 else {
@@ -455,7 +455,7 @@ function applyalphabetFilter() {
                     let filteredData = document.getElementById("tableBody");
                     filteredData.innerHTML = '';
                     createTable(res);
-                    attachListnerToStatusOption();
+                    attachListnerToChangeStatus();
                 }
             }
             else {
@@ -466,7 +466,7 @@ function applyalphabetFilter() {
                     filteredData.innerHTML = '';
                     let arr = dropDown(employee, selectedData[0], selectedData[1], selectedData[2]);
                     createTable(arr);
-                    attachListnerToStatusOption();
+                    attachListnerToChangeStatus();
                     btn = "";
                 }
                 else {
@@ -488,7 +488,7 @@ function applyalphabetFilter() {
                     let filteredData = document.getElementById("tableBody");
                     filteredData.innerHTML = '';
                     createTable(res);
-                    attachListnerToStatusOption();
+                    attachListnerToChangeStatus();
                 }
             }
 
@@ -527,7 +527,7 @@ function applyDropDownFilter() {
     let tbody = document.getElementById("tableBody");
     tbody.innerHTML = ' ';
     createTable(arr);
-    attachListnerToStatusOption();
+    attachListnerToChangeStatus();
 }
 
 function dropDown(input, status, location, dept) {
@@ -808,7 +808,7 @@ function resetFilters() {
     btn = "";
     collectSelectedDropDownValue();
     createTable(employee);
-    attachListnerToStatusOption();
+    attachListnerToChangeStatus();
 }
 
 //export file to excel
