@@ -328,8 +328,6 @@ function createCards(roleDetails) {
             image5.innerText = str;
             image5.setAttribute('id', 'total-count');
             profieIconsContainer.appendChild(image5);
-
-
         }
         totalEmployeeDivision.appendChild(profieIconsContainer);
 
@@ -402,9 +400,6 @@ function addViewEmployeeListner() {
     })
 }
 
-
-
-// addListnerToEditIcon();
 //edit employee details
 
 function addListnerToEditIcon() {

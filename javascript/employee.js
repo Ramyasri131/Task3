@@ -2,6 +2,21 @@
 fetchData();
 createTable(employee);
 
+
+window.document.addEventListener("DOMContentLoaded", function () {
+    var today = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+    document.getElementsByName("todaysdate")[0]?.setAttribute('min', today);
+    let headerHeight = document.querySelector(".header").offsetHeight;
+    let descriptionHeight = document.querySelector(".employee-section").offsetHeight;
+    let filterHeight = document.querySelector(".filter-section").offsetHeight;
+    let advanceFilterHeight = document.querySelector(".advance-filter-section").offsetHeight;
+    let deleteSectionHeight = document.querySelector(".delete-section").offsetHeight;
+    let totalHeight = headerHeight + descriptionHeight + filterHeight + advanceFilterHeight + deleteSectionHeight;
+    totalHeight += 50;
+    let tableHeight = "calc(100vh - " + totalHeight + "px)";
+    document.querySelector(".table-div").style.height = tableHeight;
+});
+
 roleDetails.forEach(r => {
     let newOption = new Option(r.roleName, r.roleName);
     document.getElementById("roleDropDown").add(newOption, undefined);
@@ -63,7 +78,7 @@ function createTable(data) {
         }
 
     }
-    addListnerToEditOption;
+    addListnerToEditOption();
     document.getElementById("delete-btn").disabled = true;
 }
 
@@ -623,7 +638,6 @@ function checkAllCheckBoxes() {
         a.checked = mainCheck.checked;
     })
     let checkCount = document.querySelectorAll("input[type='checkbox']:checked").length > 0;
-    // console.log(checkCount);
     if (!checkCount) {
         del.style.background = "#F89191";
     }
@@ -776,7 +790,6 @@ function invalidInput(element, id, msg) {
 
 //clear fields
 function clearInputFeilds(event) {
-    // event.preventDefault();
     document.querySelector(".edit-button").style.display = "none";
     document.querySelector(".save-button").style.display = "none";
     document.querySelector(".submit-button").style.display = "block";

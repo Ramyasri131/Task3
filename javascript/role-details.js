@@ -1,5 +1,4 @@
-employee = JSON.parse(localStorage.getItem('employee'));
-role = JSON.parse(localStorage.getItem('viewRole'));
+fetchData();
 document.querySelector(".add-employee-role-name").innerText = role.roleName;
 createEmployeeDetailsCards();
 createDescripton();
@@ -147,7 +146,6 @@ var unassignedEmployee = [];
 function collectUnassignedEmployees() {
     document.getElementById("assign-employee-section").innerHTML = "";
     let inputLocation = document.getElementById("location-dropdown").value;
-    console.log(inputLocation);
     let a = 0;
     employee.forEach(r => {
         if (r.role == "N/A" && r.location == role.cityName) {
@@ -208,7 +206,6 @@ function checkUnassignedEmployees(className, employeeID) {
 }
 
 function addRoleForEmployee() {
-    // event.preventDefault;.
     let inputRole = document.getElementById("role-name-input");
     employee.forEach(r => {
         if (unassignedEmployee.includes(r.empNo)) {

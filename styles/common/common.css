@@ -167,6 +167,7 @@
     margin-top: -0.5em;
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
+    user-select: none;
 }
 
 .employee-icon-after span {
@@ -318,6 +319,16 @@
     width:20%;
     z-index:11;
 }
+.rotate-360{
+    transform:rotate(360deg);
+    margin-top:0rem;
+}
+.rotate-180{
+    transform:rotate(180deg);
+    margin-top:2rem;
+    margin-left:-2rem;
+}
+
 
 @media screen and (max-width:720px) {
     .minimized-side-nav {
@@ -325,10 +336,24 @@
     }
 
     #side-nav {
-        display: none;
+        display: none; 
         height: 100vh;
+        position: absolute;
+        width:50%;
+        z-index:11;
     }
-
+    .rotate-180{
+        transform:rotate(180deg);
+        margin-top:2rem;
+        margin-left:-2rem;
+        z-index:12;
+    }
+    .rotate-360{
+        transform:rotate(360deg);
+        margin-top:0rem;
+        z-index:12;
+        margin-left:7.5rem !important;
+    }
 }
 
 

@@ -100,29 +100,17 @@ roleDetails = JSON.parse(localStorage.getItem('roleDetails'))?.length ? JSON.par
 function fetchData(){
     roleDetails = JSON.parse(localStorage.getItem('roleDetails'));
     employee = JSON.parse(localStorage.getItem('employee'));
+    role= JSON.parse(localStorage.getItem('viewRole'));
 }
 
-
-window.document.addEventListener("DOMContentLoaded", function () {
-    var today = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-    document.getElementsByName("todaysdate")[0]?.setAttribute('min', today);
-    let headerHeight = document.querySelector(".header").offsetHeight;
-    let descriptionHeight = document.querySelector(".employee-section").offsetHeight;
-    let filterHeight = document.querySelector(".filter-section").offsetHeight;
-    let advanceFilterHeight = document.querySelector(".advance-filter-section").offsetHeight;
-    let deleteSectionHeight = document.querySelector(".change-section").offsetHeight;
-    let totalHeight = headerHeight + descriptionHeight + filterHeight + advanceFilterHeight + deleteSectionHeight;
-    totalHeight += 50;
-    let tableHeight = "calc(100vh - " + totalHeight + "px)";
-    document.querySelector(".table-div").style.height = tableHeight;
-});
 
 // toggle side Menu
 var sideBarOpen = true;
 var mobileViewSideBarOpen = false;
 
 
-const sideBar = document.querySelector('#side-nav');
+// const sideBar = document.querySelector('#side-nav');
+const sideBar=document.getElementById("side-nav");
 const notification = document.querySelector(".pop-up");
 const handleIcon = document.getElementById("handle-logo");
 const mainContent = document.querySelector(".main-content");
@@ -155,33 +143,23 @@ let toggleSideBar = () => {
 
 function openmobileViewSideBar() {
     sideBar.style.display = "flex";
-    sideBar.style.position = "absolute";
-    sideBar.style.width = "50%";
-    sideBar.style.zIndex = 11;
-    handleIcon.style.marginLeft = "7.5rem";
-    handleIcon.style.zIndex = 12;
-    handleIcon.style.transform = "rotate(360deg)";
-    handleIcon.style.marginTop = "0rem";
+    handleIcon.classList.add("rotate-360");
+    handleIcon.classList.remove("rotate-180");
 }
 
 function closemobileViewSideBar() {
     sideBar.style.display = "none";
-    sideBar.style.width = "20%";
-    sideBar.style.zIndex = 11;
-    handleIcon.style.marginLeft = "-2rem";
-    handleIcon.style.zIndex = 12;
-    handleIcon.style.transform = "rotate(180deg)";
-    handleIcon.style.marginTop = "2rem";
+    handleIcon.classList.add("rotate-180");
+    handleIcon.classList.remove("rotate-360");
 }
 
 function openSideBar() {
     notification.style.display = "block";
     sideBar.style.display = "flex";
     minSideBar.style.display = "none";
-    handleIcon.classList.remove('rotate');
     mainContent.style.width = "78%";
-    handleIcon.style.transform = "rotate(360deg)";
-    handleIcon.style.marginTop = "0rem";
+    handleIcon.classList.add("rotate-360");
+    handleIcon.classList.remove("rotate-180");
 }
 
 function closeSideBar() {
@@ -189,9 +167,8 @@ function closeSideBar() {
     minSideBar.style.display = "block";
     notification.style.display = "none";
     mainContent.style.width = "99%";
-    handleIcon.style.transform = "rotate(180deg)";
-    handleIcon.style.marginTop = "2rem";
-    handleIcon.style.marginLeft = "-2rem";
+    handleIcon.classList.add("rotate-180");
+    handleIcon.classList.remove("rotate-360");
 }
 
 function closeNotification() {
