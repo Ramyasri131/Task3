@@ -696,7 +696,7 @@ function SubmitEmployeeDetails(event) {
             isInvalid = 1;
         }
     }
-    id = document.getElementById("empNo");
+    let id = document.getElementById("empNo");
     let idres = id.value.slice(0, 2);
     let idnum = id.value.slice(2, id.length);
     if (k == 0) {
@@ -715,7 +715,7 @@ function SubmitEmployeeDetails(event) {
             }
         })
     }
-    number = document.getElementById("mobileNumber");
+    let  number = document.getElementById("mobileNumber");
     if (isNaN(number.value)) {
         invalidInput(document.getElementById("phone-number"), number, "Enter valid Mobile number");
         isInvalid = 1;
@@ -725,7 +725,7 @@ function SubmitEmployeeDetails(event) {
         isInvalid = 1;
     }
     let st;
-    mailID = document.getElementById("mailId");
+    let mailId = document.getElementById("mailId");
     for (let i = 0; i < mailId.value.length; i++) {
         if (mailId.value[i] == '@') {
             st = i + 1;
