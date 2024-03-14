@@ -255,7 +255,7 @@ function addListnerToEditOption() {
                         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
                         let fileReader = new FileReader();
                         fileReader.onload = function () {
-                            imageData = reader.result;
+                            imageData = fileReader.result;
 
                         }
                         fileReader.readAsDataURL(event.target.files[0]);
@@ -347,7 +347,7 @@ function openEmployeeForm() {
         imgdisplay.src = URL.createObjectURL(event.target.files[0]);
         let fileReader = new FileReader();
         fileReader.onload = function () {
-            imageData = reader.result;
+            imageData = fileReader.result;
         }
         fileReader.readAsDataURL(event.target.files[0]);
     })
